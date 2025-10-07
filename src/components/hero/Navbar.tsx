@@ -56,6 +56,8 @@ export default function Navbar() {
         <div className="mt-4 py-4 border-t-1 border-t-[#FFFFFF]/20 border-0 flex flex-col lg:flex-row justify-between items-start">
           <a
             href="https://taostats.io/subnets/46/chart"
+            target="_blank"
+            rel="noopener noreferrer"
             className={`text-white bg-gradient-to-r from-[#293EAC] to-[#0E1330] ${syne.className} py-2 px-3 rounded-lg border border-white/20 transition-all duration-700 shadow-[0_0_20px_rgba(51,79,215,0.3)]`}
           >
             BUY DTAO
