@@ -53,62 +53,62 @@ export default function Footer() {
           </div>
           <div className="order-2 lg:order-1 h-auto lg:h-full">
             <div className="grid grid-rows-[5fr_2fr] lg:grid-rows-[7fr_3fr] h-full">
-              <div className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 mb-10 lg:mb-0 p-4 lg:p-8 xl:p-10 self-end">
-                <div className="order-1 xl:order-1 max-w-[200px] lg:min-w-[200px] flex flex-col items-start justify-start text-white">
+              <div className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-[1fr_1fr_0.8fr_0.8fr] gap-2 xl:gap-4 mb-10 lg:mb-0 p-2 lg:p-8 xl:p-[1.7vw] self-end">
+                <div className="order-1 xl:order-1 flex flex-col items-start justify-start text-white">
                   <h3 className={`${worksans.className} font-bold text-[1rem] mb-2`}>SOLUTIONS</h3>
                   <a
                     href="#"
-                    className={`${worksans.className} text-sm hover:text-[#98C8FF] transition-colors duration-200`}
+                    className={`${worksans.className} text-xs md:text-sm hover:text-[#98C8FF] transition-colors duration-200`}
                   >
-                    Dashboard
+                    DASHBOARD
                   </a>
                   <a
                     href="#"
-                    className={`${worksans.className} text-sm hover:text-[#98C8FF] transition-colors duration-200`}
+                    className={`${worksans.className} text-xs md:text-sm hover:text-[#98C8FF] transition-colors duration-200`}
                   >
-                    Dashboard API
+                    DASHBOARD API
                   </a>
                   <a
                     href="#"
-                    className={`${worksans.className} text-sm hover:text-[#98C8FF] transition-colors duration-200`}
+                    className={`${worksans.className} text-xs md:text-sm hover:text-[#98C8FF] transition-colors duration-200`}
                   >
-                    Prediction Market API
+                    PREDICTION MARKET API
                   </a>
                   <a
                     href="#"
-                    className={`${worksans.className} text-sm hover:text-[#98C8FF] transition-colors duration-200`}
+                    className={`${worksans.className} text-xs md:text-sm hover:text-[#98C8FF] transition-colors duration-200`}
                   >
-                    Appraisals API
+                    APPRAISALS API
                   </a>
                 </div>
-                <div className="order-3 xl:order-2 max-w-[200px] lg:min-w-[200px] flex flex-col items-start justify-start text-white">
+                <div className="order-3 xl:order-2 flex flex-col items-start justify-start text-white">
                   <h3 className={`${worksans.className} font-bold text-[1rem] mb-2`}>COMPANY</h3>
                   <a
                     href="#"
-                    className={`${worksans.className} text-sm hover:text-[#98C8FF] transition-colors duration-200`}
+                    className={`${worksans.className} text-xs md:text-sm hover:text-[#98C8FF] transition-colors duration-200`}
                   >
                     SUBNET STATUS
                   </a>
                   <a
                     href="#"
-                    className={`${worksans.className} text-sm hover:text-[#98C8FF] transition-colors duration-200`}
+                    className={`${worksans.className} text-xs md:text-sm hover:text-[#98C8FF] transition-colors duration-200`}
                   >
                     BRANDING
                   </a>
                   <a
                     href="#"
-                    className={`${worksans.className} text-sm hover:text-[#98C8FF] transition-colors duration-200`}
+                    className={`${worksans.className} text-xs md:text-sm hover:text-[#98C8FF] transition-colors duration-200`}
                   >
                     TEAM
                   </a>
                 </div>
-                <div className="order-4 xl:order-3 max-w-[200px] lg:min-w-[200px] flex flex-col items-start justify-start text-white">
+                <div className="order-4 xl:order-3 flex flex-col items-start justify-start text-white">
                   <h3 className={`${worksans.className} font-bold text-[1rem] mb-2`}>SOCIALS</h3>
                   <a
                     href="https://discord.gg/fpDQ6tHEXb"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${worksans.className} text-sm flex justify-center items-center gap-1 hover:text-[#98C8FF] transition-colors duration-200 group`}
+                    className={`${worksans.className} text-xs md:text-sm flex justify-center items-center gap-1 hover:text-[#98C8FF] transition-colors duration-200 group`}
                   >
                     DISCORD{" "}
                     <MoveUpRight
@@ -121,7 +121,7 @@ export default function Footer() {
                     href="https://www.linkedin.com/company/resilabs/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${worksans.className} text-sm flex justify-center items-center gap-1 hover:text-[#98C8FF] transition-colors duration-200 group`}
+                    className={`${worksans.className} text-xs md:text-sm flex justify-center items-center gap-1 hover:text-[#98C8FF] transition-colors duration-200 group`}
                   >
                     LINKEDIN{" "}
                     <MoveUpRight
@@ -134,7 +134,7 @@ export default function Footer() {
                     href="https://x.com/resilabsai"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${worksans.className} text-sm flex justify-center items-center gap-1 hover:text-[#98C8FF] transition-colors duration-200 group`}
+                    className={`${worksans.className} text-xs md:text-sm flex justify-center items-center gap-1 hover:text-[#98C8FF] transition-colors duration-200 group`}
                   >
                     X{" "}
                     <MoveUpRight
@@ -144,13 +144,13 @@ export default function Footer() {
                     />
                   </a>
                 </div>
-                <div className="order-2 xl:order-4 max-w-[200px] lg:min-w-[200px] flex flex-col items-start justify-start text-white">
+                <div className="order-2 xl:order-4 flex flex-col items-start justify-start text-white">
                   <h3 className={`${worksans.className} font-bold text-[1rem] mb-2`}>OTHERS</h3>
                   <a
                     href="https://taostats.io/subnets/46/chart"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${worksans.className} text-sm flex justify-center items-center gap-1 hover:text-[#98C8FF] transition-colors duration-200 group`}
+                    className={`${worksans.className} text-xs md:text-sm flex justify-center items-center gap-1 hover:text-[#98C8FF] transition-colors duration-200 group`}
                   >
                     BUY RESI TOKEN{" "}
                     <MoveUpRight
@@ -166,20 +166,20 @@ export default function Footer() {
                 <div className="px-[2vw] mb-2 text-xl flex w-full justify-between items-center lg:hidden">
                   <a
                     href="#"
-                    className={`${dmsans.className} font-medium text-xl hover:text-[#98C8FF] transition-colors duration-200`}
+                    className={`${dmsans.className} font-medium text-sm md:text-xl hover:text-[#98C8FF] transition-colors duration-200`}
                   >
                     Terms of Services{" "}
                   </a>
                   <a
                     href="#"
-                    className={`${dmsans.className} font-medium text-xl hover:text-[#98C8FF] transition-colors duration-200`}
+                    className={`${dmsans.className} font-medium text-sm md:text-xl hover:text-[#98C8FF] transition-colors duration-200`}
                   >
                     Privacy Policy
                   </a>
                 </div>
                 <h1
                   className={`${anton.className} 
-                                        text-[2.72em] md:text-[5rem] lg:text-[7.2rem] xl:text-[5.5rem] 2xl:text-[10rem] 
+                                        text-[11.2vw] md:text-[12vw] lg:text-[11.2vw] xl:text-[7vw] 2xl:text-[8.5vw] 
                                         font-bold origin-center scale-y-[1.5] lg:scale-y-[1] xl:scale-y-[1.5]
                                         bg-gradient-to-b from-[#DDEDFF] via-[#98C8FF] via-56% to-[#2C3A7E]
                                         text-transparent bg-clip-text
