@@ -22,11 +22,11 @@ export default function LandingPage() {
                 h-[70vh] lg:h-auto"
           >
             <h1
-              className={`${anton.className} text-[4rem] lg:text-[7.9rem] xl:text-[10rem] 2xl:text-[14.4rem] font-bold origin-center lg:scale-y-[1.5] mt-25 lg:mt-0
+              className={`${anton.className} text-[4rem] lg:text-[7.9rem] xl:text-[10rem] 2xl:text-[12.2vw] font-bold origin-center lg:scale-y-[1.5] mt-25 lg:mt-0
              bg-[url('/common/noise.svg')] bg-repeat bg-clip-text text-blue-900`}
             >
               REAL ESTATE <br className="block lg:hidden" />
-              <span className="text-[7rem] lg:text-[7.9rem] xl:text-[10rem] 2xl:text-[15rem] leading-[1]">
+              <span className="text-[7rem] lg:text-[7.9rem] xl:text-[10rem] 2xl:text-[12.2vw] leading-[1]">
                 ORACLE
               </span>
             </h1>

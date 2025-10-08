@@ -1,3 +1,4 @@
+import EnterResi from "@/components/hero/EnterResi";
 import Footer from "@/components/hero/Footer";
 import IndustryOverview from "@/components/hero/IndustryOverview";
 import LandingPage from "@/components/hero/LandingPage";
@@ -9,6 +10,7 @@ export default function Home() {
       <Navbar />
       <LandingPage />
       <IndustryOverview />
+      <EnterResi />
       <Footer />
     </div>
   );
