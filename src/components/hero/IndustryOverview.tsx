@@ -8,7 +8,7 @@ const syne = Syne({
 
 export default function IndustryOverview() {
   return (
-    <section className="w-full relative">
+    <section className="w-full lg:h-screen relative">
       <div
         className="absolute inset-0 w-full h-full pointer-events-none"
         style={{
@@ -34,7 +34,7 @@ export default function IndustryOverview() {
         style={{
           backgroundImage: "url(/common/blue-grid.svg)",
           backgroundRepeat: "repeat",
-          backgroundSize: "10px 10px",
+          backgroundSize: "15px 15px",
           opacity: 0.25,
         }}
       />
