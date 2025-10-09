@@ -11,7 +11,7 @@ export default function AskResi() {
                     className="absolute right-1 top-1/2 -translate-y-1/2 h-10 w-18 rounded-4xl bg-primary hover:bg-primary/90 bg-gradient-to-br from-[#293EAC] to-[#080D23]"
                 >
                     <Image
-                    src={'/icon/button-resi.svg'}
+                    src={"/icon/button-resi.svg"}
                     alt="resi icon"
                     width={23}
                     height={23}
