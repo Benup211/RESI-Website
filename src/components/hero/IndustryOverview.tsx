@@ -55,12 +55,12 @@ export default function IndustryOverview() {
         <div className="w-full h-full grid gap-2 grid-cols-1 lg:grid-cols-2 p-[4vw]">
           <div className="h-full w-full">
             <h3
-              className={`text-center lg:text-left ${syne.className} text-[7.5vw]/[1] md:text-3xl lg:text-[2vw]/[1] xl:text-[1.9vw]/[1] font-normal text-[#CAD1F3]`}
+              className={`text-center lg:text-left ${syne.className} text-[7.5vw]/[1] md:text-3xl lg:text-[2vw]/[1] xl:text-[2.5vw]/[1] font-normal text-[#CAD1F3]`}
             >
               Real Estate is Stuck in
               <br />
               <span
-                className={`${syne.className} text-[#899DFF] text-[18vw]/[1] md:text-7xl lg:text-[5.5vw]/[0.5] xl:text-[5vw]/[0.5] font-extrabold`}
+                className={`${syne.className} text-[#899DFF] text-[18vw]/[1] md:text-7xl lg:text-[5.5vw]/[0.5] xl:text-[6.4vw]/[0.5] font-extrabold`}
               >
                 2012.
               </span>
@@ -68,7 +68,7 @@ export default function IndustryOverview() {
           </div>
           <div className="h-full w-full">
             <p
-              className={`text-center lg:text-right ${syne.className} text-[3.5vw] lg:text-[20px] font-normal text-[#CAD1F3]`}
+              className={`text-center lg:text-right ${syne.className} text-[3.5vw] lg:text-[20px] xl:text-[24px] font-normal text-[#CAD1F3]`}
             >
               Real Estate is dying for innovation but
               <br />

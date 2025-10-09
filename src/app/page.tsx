@@ -6,6 +6,7 @@ import LandingPage from "@/components/hero/LandingPage";
 import Navbar from "@/components/hero/Navbar";
 // import Navbar from "@/components/hero/Navbar";
 import Ring from "@/components/hero/Ring";
+import Roadmap from "@/components/hero/Roadmap";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <IndustryOverview />
       <IndustryLayers />
       <EnterResi />
+      <Roadmap />
       <Ring />
       <Footer />
     </div>
