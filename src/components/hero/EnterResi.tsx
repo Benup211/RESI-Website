@@ -8,8 +8,13 @@ const syne = Syne({
 
 export default function EnterResi() {
   return (
-    <section className="w-full h-[60vh] md:h-[70vh] flex justify-center items-center relative">
-      {/* <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-b from-[#04091B] via-[#253879] to-[#86A0FF]/10" /> */}
+    <section className="w-full h-[60vh] md:h-[70vh] flex justify-center items-center relative -mt-1 lg:mt-0">
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom,rgba(37, 56, 121,1) 0%,rgba(0,0,0,0) 75%)",
+        }}
+      />
       <div className="w-full h-full max-w-2xl xl:max-w-4xl">
         <div className="grid grid-rows-1 h-full">
           <div className="relative">

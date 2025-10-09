@@ -6,7 +6,6 @@ const anton = Anton({
   subsets: ["latin"],
   weight: ["400"],
 });
-
 const syne = Syne({
   variable: "--font-syne",
   subsets: ["latin"],
@@ -42,7 +41,9 @@ export default function LandingPage() {
                   sizes="100vw"
                   priority
                 />
-                <h1 className="absolute text-white inset-0 rounded-full top-0 right-0 text-xl">Explore Now</h1>
+                <h1 className="absolute text-white inset-0 rounded-full top-0 right-0 text-xl">
+                  Explore Now
+                </h1>
               </div>
             </div>
           </div>
