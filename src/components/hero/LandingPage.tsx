@@ -31,15 +31,20 @@ export default function LandingPage() {
               </span>
             </h1>
 
-            <Image
-              className="absolute left-1/2 rounded-full -translate-x-1/2 lg:ml-8 top-[25vh] md:top-[35vh] lg:-top-85 xl:-top-100 2xl:-top-115 w-[310px] h-[350px] lg:w-[450px] lg:h-[510px] xl:w-[550px] xl:h-[610px] 2xl:w-[670px] 2xl:h-[750px]"
-              src="/common/earth.png"
-              alt="Earth"
-              width={600}
-              height={680}
-              sizes="100vw"
-              priority
-            />
+            <div className="absolute left-1/2 rounded-full -translate-x-1/2 lg:ml-8 top-[25vh] md:top-[35vh] lg:-top-85 xl:-top-100 2xl:-top-115 w-[310px] h-[350px] lg:w-[450px] lg:h-[510px] xl:w-[550px] xl:h-[600px] 2xl:w-[700px] 2xl:h-[700px]">
+              <div className="relative w-full h-full rounded-full">
+                <Image
+                  className="rounded-full"
+                  src="/common/earth.png"
+                  alt="Earth"
+                  fill
+                  objectFit="contain"
+                  sizes="100vw"
+                  priority
+                />
+                <h1 className="absolute text-white inset-0 rounded-full top-0 right-0 text-xl">Explore Now</h1>
+              </div>
+            </div>
           </div>
 
           <div className="order-2 lg:order-1 flex items-center justify-center lg:justify-start lg:px-12 xl:px-14 2xl:px-20 h-[15vh] lg:h-auto text-white">
