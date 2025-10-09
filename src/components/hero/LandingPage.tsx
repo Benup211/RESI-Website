@@ -5,6 +5,7 @@ import { AnimateOnLoad } from "../animations/AnimateOnLoad";
 import { imageRevealTop, subtleRiseUp, textRevealBottom } from "@/lib/animation";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import AskResi from "../common/AskResi";
 
 const anton = Anton({
   variable: "--font-anton",
@@ -47,8 +48,7 @@ export default function LandingPage() {
                 </span>
               </h1>
             </AnimateOnLoad>
-
-            <div className="absolute left-1/2 -translate-x-1/2 lg:ml-8 top-[25vh] md:top-[35vh] lg:-top-85 xl:-top-100 2xl:-top-115 z-20">
+            <div className="absolute left-1/2 -translate-x-1/2 lg:ml-8 top-[25vh] md:top-[35vh] lg:-top-85 xl:-top-100 2xl:-top-115 z-20 hidden">
               <AnimateOnLoad variant={imageRevealTop} delay={0.6}>
                 <motion.div
                   className="rounded-full w-[310px] h-[350px] lg:w-[450px] lg:h-[510px] xl:w-[550px] xl:h-[600px] 2xl:w-[700px] 2xl:h-[700px] cursor-pointer"
@@ -133,6 +133,16 @@ export default function LandingPage() {
                 </motion.div>
               </AnimateOnLoad>
             </div>
+          </div>
+
+          <div className="absolute top-[50%] lg:top-[30%] xl:top-[35%] left-1/2 -translate-x-1/2 z-20 text-white flex flex-col items-center justify-center text-center gap-4 w-[80%] lg:w-auto">
+            <h2 className={`${syne.className} font-semibold text-[15px] lg:text-2xl xl:text-3xl 2xl:text-5xl`}>
+              Questions about Real Estate?{" "}
+              <span className="bg-gradient-to-r from-[#C4CEFF] via-[#9C70D5] to-[#3753E4] bg-clip-text text-transparent">
+                Ask Resi.
+              </span>
+            </h2>
+            <AskResi />
           </div>
 
           <div className="order-2 lg:order-1 flex items-center justify-center lg:justify-start lg:px-12 xl:px-14 2xl:px-20 h-[15vh] lg:h-auto text-white">
