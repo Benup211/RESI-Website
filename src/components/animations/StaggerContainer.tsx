@@ -7,10 +7,10 @@ interface StaggerContainerProps {
   className?: string;
 }
 
-export const StaggerContainer = ({ 
-  children, 
+export const StaggerContainer = ({
+  children,
   staggerDelay = 0.1,
-  className = "" 
+  className = "",
 }: StaggerContainerProps) => {
   const containerVariant: Variants = {
     hidden: { opacity: 0 },
@@ -18,9 +18,9 @@ export const StaggerContainer = ({
       opacity: 1,
       transition: {
         staggerChildren: staggerDelay,
-        delayChildren: 0.1
-      }
-    }
+        delayChildren: 0.1,
+      },
+    },
   };
 
   return (

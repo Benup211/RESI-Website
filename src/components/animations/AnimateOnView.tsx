@@ -12,28 +12,28 @@ interface AnimateOnViewProps {
   once?: boolean; // Animate only once when in view
 }
 
-export const AnimateOnView = ({ 
-  children, 
-  variant, 
+export const AnimateOnView = ({
+  children,
+  variant,
   delay = 0,
   duration = 0.6,
   className = "",
-  once = true 
+  once = true,
 }: AnimateOnViewProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once, amount: 0.3 });
 
   const defaultVariant: Variants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration,
         delay,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (

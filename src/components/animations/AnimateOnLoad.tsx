@@ -10,23 +10,23 @@ interface AnimateOnLoadProps {
   className?: string;
 }
 
-export const AnimateOnLoad = ({ 
-  children, 
-  variant, 
+export const AnimateOnLoad = ({
+  children,
+  variant,
   delay = 0,
-  className = "" 
+  className = "",
 }: AnimateOnLoadProps) => {
   const defaultVariant: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
         delay,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
