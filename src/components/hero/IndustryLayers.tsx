@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { Syne } from "next/font/google";
 import Image from "next/image";
 import gsap from "gsap";
@@ -10,6 +10,8 @@ const syne = Syne({
   variable: "--font-syne",
   subsets: ["latin"],
 });
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function IndustryLayers() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -52,48 +54,47 @@ export default function IndustryLayers() {
     },
   ];
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  useLayoutEffect(() => {
+    if (!sectionRef.current || !topTextRef.current || !phasesRef.current.length) return;
 
-    const allPhases = phasesRef.current;
-    if (!allPhases.length || !sectionRef.current) return;
+    const ctx = gsap.context(() => {
+      const allPhases = phasesRef.current;
 
-    gsap.set(allPhases, { opacity: 0, scale: 0.95 });
-    gsap.set(allPhases[0], { opacity: 1, scale: 1 });
-    gsap.set(topTextRef.current, { y: 0, opacity: 1 });
+      gsap.set(allPhases, { opacity: 0, scale: 0.95 });
+      gsap.set(allPhases[0], { opacity: 1, scale: 1 });
+      gsap.set(topTextRef.current, { y: 0, opacity: 1 });
 
-    const tlScroll = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: `+=${3000 * (phases.length - 1)}`,
-        scrub: true,
-        pin: true,
-        anticipatePin: 1,
-        snap: {
-          snapTo: 1 / (phases.length - 1),
-          duration: { min: 0.2, max: 0.4 },
-          inertia: false,
+      const tlScroll = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: `+=${1000 * (phases.length - 1)}`,
+          scrub: true,
+          pin: true,
+          anticipatePin: 1,
+          snap: {
+            snapTo: 1 / (phases.length - 1),
+            duration: { min: 0.2, max: 0.4 },
+            inertia: false,
+          },
         },
-      },
-    });
+      });
 
-    tlScroll.to(topTextRef.current, { y: 30, opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
+      tlScroll.to(topTextRef.current, { y: 30, opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
 
-    for (let i = 0; i < phases.length - 1; i++) {
-      const current = allPhases[i];
-      const next = allPhases[i + 1];
+      for (let i = 0; i < phases.length - 1; i++) {
+        const current = allPhases[i];
+        const next = allPhases[i + 1];
+        tlScroll
+          .to(current, { opacity: 0, scale: 0.95, duration: 0.6 }, i * 1.2 + 0.2)
+          .to(next, { opacity: 1, scale: 1.05, duration: 0.8 }, i * 1.2 + 0.5);
+      }
 
-      tlScroll
-        .to(current, { opacity: 0, scale: 0.95, duration: 0.6 }, i * 1.2 + 0.2)
-        .to(next, { opacity: 1, scale: 1.05, duration: 0.8 }, i * 1.2 + 0.5);
-    }
-
-    scrollTimelineRef.current = tlScroll;
+      scrollTimelineRef.current = tlScroll;
+    }, sectionRef);
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-      gsap.globalTimeline.clear();
+      ctx.revert();
     };
   }, [phases.length]);
 

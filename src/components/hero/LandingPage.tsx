@@ -6,6 +6,7 @@ const anton = Anton({
   subsets: ["latin"],
   weight: ["400"],
 });
+
 const syne = Syne({
   variable: "--font-syne",
   subsets: ["latin"],
