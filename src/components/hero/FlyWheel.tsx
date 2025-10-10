@@ -9,7 +9,7 @@ const syne = Syne({
 
 export default function FlyWheel() {
   return (
-    <section className="w-full h-screen bg-black relative">
+    <section className="w-full h-screen lg:h-[80vh] bg-black relative">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -25,12 +25,12 @@ export default function FlyWheel() {
           opacity: 0.25,
         }}
       />
-      <div
+      {/* <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0,0,0,0) 65%)",
         }}
-      />
+      /> */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -39,13 +39,13 @@ export default function FlyWheel() {
       />
 
       {/* Adding ring */}
-      {/* <div
+      <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
             "linear-gradient(to bottom,rgba(37, 56, 121,1) 0%,rgba(0,0,0,1) 25%,rgba(0, 0, 0, 0) 65%",
         }}
-      /> */}
+      />
 
       <div className="w-full h-full grid grid-rows-[3fr_7fr] md:grid-rows-[2fr_8fr] lg:grid-rows-[2fr_8fr] relative">
         <div className="flex justify-center items-center w-full h-full">

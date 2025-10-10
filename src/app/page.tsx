@@ -5,6 +5,7 @@ import IndustryLayers from "@/components/hero/IndustryLayers";
 import IndustryOverview from "@/components/hero/IndustryOverview";
 import LandingPage from "@/components/hero/LandingPage";
 import Navbar from "@/components/hero/Navbar";
+import Ring from "@/components/hero/Ring";
 import Roadmap from "@/components/hero/Roadmap";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <IndustryLayers />
       <EnterResi />
       <Roadmap />
+      <Ring/>
       <FlyWheel />
       <Footer />
     </div>

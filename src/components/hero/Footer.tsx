@@ -20,7 +20,7 @@ const worksans = Work_Sans({
 
 export default function Footer() {
   return (
-    <footer className="relative w-full xl:h-screen px-6 py-8 lg:px-12 lg:py-8 bg-black">
+    <footer className="relative w-full xl:h-screen px-6 py-8 lg:px-12 lg:py-8 bg-black overflow-y-visible">
       <div
         className="absolute top-0 left-0 w-full h-1/2 pointer-events-none"
         style={{
@@ -57,7 +57,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="order-2 lg:order-1 h-auto lg:h-full">
-            <div className="grid grid-rows-[5fr_2fr] lg:grid-rows-[7fr_3fr] h-full">
+            <div className="grid grid-rows-[5fr_2fr] lg:grid-rows-[7fr_3fr] xl:grid-rows-[6fr_4fr] 2xl:grid-rows-[5fr_5fr] 3xl:grid-rows-[4fr_6fr] h-full">
               <div className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-[1fr_1fr_0.8fr_0.8fr] gap-2 xl:gap-4 mb-10 lg:mb-0 p-2 lg:p-8 xl:p-[1.7vw] self-end">
                 <div className="order-1 xl:order-1 flex flex-col items-start justify-start text-white">
                   <h3 className={`${worksans.className} font-bold text-[1rem] mb-2`}>SOLUTIONS</h3>

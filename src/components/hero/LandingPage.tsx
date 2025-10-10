@@ -4,7 +4,7 @@ import Image from "next/image";
 import { AnimateOnLoad } from "../animations/AnimateOnLoad";
 import { imageRevealTop, subtleRiseUp, textRevealBottom } from "@/lib/animation";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AskResi from "../common/AskResi";
 import { FlashlightText } from "../animations/FlashlightText";
 
@@ -23,6 +23,11 @@ export default function LandingPage() {
   const [isHovered, setIsHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  }, []);
 
   // Circular motion keyframes for top-left quadrant
   const radius = 600; // distance of curve
@@ -45,8 +50,83 @@ export default function LandingPage() {
   const exploreNowAnimationDuration = 0.3; // the less more fast
 
   return (
-    <div className="w-full min-h-screen bg-black overflow-hidden relative">
-      {/* Background Dim Overlay */}
+    <div className="w-full min-h-screen overflow-hidden relative">
+
+
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to bottom,rgba(12, 16, 83, 0.1) 0%,rgba(7, 18, 28, 1) 100%",
+          opacity: 0.2
+        }}
+      />
+
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to bottom,rgba(10, 22, 83, 1) 9%,rgba(23, 35, 97, 1) 34%,rgba(0, 8, 16, 1) 77%",
+          opacity: 0.5
+        }}
+      />
+
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to bottom,rgba(1, 1, 1, 1) 9%,rgba(31, 48, 130, 1) 56%,rgba(22, 23, 28, 1) 100%",
+        }}
+      />
+
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "url(/common/radical-gradient.png)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.5,
+          mixBlendMode: "soft-light",
+        }}
+      />
+
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "url(/common/map.png)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.48,
+          scale: 1.1,
+          mixBlendMode: "lighten",
+        }}
+      />
+
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0,0,0,0) 5%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to top,rgba(0, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 5%",
+        }}
+      />
+
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div
+          className="w-full h-full bg-black/60 backdrop-blur-md"
+          style={{
+            backdropFilter: "blur(1px)",
+            WebkitBackdropFilter: "blur(1px)",
+          }}
+        />
+      </div>
+
       <motion.div
         className="absolute inset-0 bg-black pointer-events-none z-10"
         initial={{ opacity: 0 }}
@@ -63,7 +143,7 @@ export default function LandingPage() {
             <FlashlightText delay={1000} spotlightSize={200} intensity={5}>
               <AnimateOnLoad variant={textRevealBottom} delay={1}>
                 <h1
-                  className={`${anton.className} text-[4rem] lg:text-[7.9rem] xl:text-[10rem] xx:text-[11rem] 2xl:text-[15rem] font-bold origin-center lg:scale-y-[1.5] mt-25 lg:mt-0`}
+                  className={`${anton.className} text-[4rem] lg:text-[7.9rem] xl:text-[10rem] xx:text-[11rem] 2xl:text-[12rem] 3xl:text-[13rem] font-bold origin-center lg:scale-y-[1.5] mt-25 lg:mt-0`}
                 >
                   <span
                     style={{
@@ -85,14 +165,14 @@ export default function LandingPage() {
                     }}
                   >
                     REAL ESTATE <br className="block lg:hidden" />
-                    <span className="text-[4.5rem] lg:text-[7.9rem] xl:text-[10rem] xx:text-[11rem] 2xl:text-[15rem] leading-[1]">
+                    <span className="text-[4.5rem] lg:text-[7.9rem] xl:text-[10rem] xx:text-[11rem] 2xl:text-[12rem] 3xl:text-[13rem] leading-[1]">
                       ORACLE
                     </span>
                   </span>
                 </h1>
               </AnimateOnLoad>
             </FlashlightText>
-            <div className="absolute left-1/2 -translate-x-1/2 lg:ml-8 top-[25vh] md:top-[35vh] lg:-top-[40vh] xl:-top-[40vh] xx:-top-[40vh] 2xl:-top-[110%] z-20 rounded-full">
+            <div className="absolute left-1/2 -translate-x-1/2 lg:ml-8 top-[25vh] md:top-[35vh] lg:-top-[40vh] xl:-top-[40vh] xx:-top-[40vh] 2xl:-top-[40vh] 3xl:-top-[40vh] z-20 rounded-full">
               <AnimateOnLoad variant={imageRevealTop} delay={0.6}>
                 {!isHidden && (
                   <motion.div
@@ -145,10 +225,11 @@ export default function LandingPage() {
                       <motion.div
                         className="absolute inset-0 rounded-full"
                         initial={{ opacity: 0 }}
-                        animate={{
-                          opacity: isHovered ? 1 : 0,
-                          scale: isHovered ? 1.2 : 1,
-                        }}
+                        animate={
+                          isMobile
+                            ? { opacity: 1, scale: 1.3 }
+                            : { opacity: isHovered ? 1 : 0, scale: isHovered ? 1.2 : 1 }
+                        }
                         transition={{
                           opacity: { duration: 0.4 },
                           scale: {
@@ -178,7 +259,7 @@ export default function LandingPage() {
                             </linearGradient>
                           </defs>
                           <text
-                            className="text-[5px] lg:text-[6px] xl:text-[7px] 2xl:text-[8px] font-semibold tracking-[0.18em] uppercase"
+                            className="text-[10px] lg:text-[6px] xl:text-[7px] 2xl:text-[8px] font-semibold tracking-[0.18em] uppercase"
                             fill="url(#textGradient)"
                           >
                             <textPath href="#circlePath" startOffset="38%">
@@ -226,7 +307,7 @@ export default function LandingPage() {
             }
           >
             <h2
-              className={`${syne.className} font-semibold text-[15px] lg:text-2xl xl:text-3xl 2xl:text-5xl mb-2`}
+              className={`${syne.className} font-semibold text-[15px] lg:text-2xl xl:text-3xl 2xl:text-4xl mb-2`}
             >
               Questions about Real Estate?{" "}
               <span className="bg-gradient-to-r from-[#C4CEFF] via-[#9C70D5] to-[#3753E4] bg-clip-text text-transparent">

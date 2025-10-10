@@ -79,30 +79,32 @@ export default function Roadmap() {
 
   return (
     <main className="w-full overflow-x-hidden">
-      <section
-        ref={headerRef}
-        className="h-[40vh] flex items-center justify-between p-[4vw] text-black relative"
-      >
-        <div ref={textRef} className="flex flex-col gap-2 items-start text-start">
-          <p
-            className={`${syne.className} text-base md:text-xl 2xl:text-2xl tracking-wide pl-1 lg:pl-4`}
-          >
-            The Roadmap
-          </p>
-          <h3
-            className={`text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl leading-[1.1] ${syne.className}`}
-          >
-            On and Offchain <br /> Infrastructure
-          </h3>
-        </div>
-        <div ref={arrowRef} className="relative w-20 h-20 md:w-32 md:h-32 xl:w-40 xl:h-40">
-          <Image src="/icon/powered.svg" alt="resi powered icon" fill className="object-contain" />
-        </div>
-      </section>
+      <div className="flex justify-center items-center">
+        <section
+          ref={headerRef}
+          className="h-[25vh] w-[80%] flex items-center justify-between p-[4vw] text-black relative"
+        >
+          <div ref={textRef} className="flex flex-col gap-2 items-start text-start">
+            <p
+              className={`${syne.className} text-base md:text-xl 2xl:text-2xl tracking-wide pl-1 lg:pl-4`}
+            >
+              The Roadmap
+            </p>
+            <h3
+              className={`text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl leading-[1.1] ${syne.className}`}
+            >
+              On and Offchain <br /> Infrastructure
+            </h3>
+          </div>
+          <div ref={arrowRef} className="relative w-20 h-20 md:w-32 md:h-32 xl:w-40 xl:h-40">
+            <Image src="/icon/powered.svg" alt="resi powered icon" fill className="object-contain" />
+          </div>
+        </section>
+      </div>
 
       <section ref={containerRef} className="relative h-[100vh] overflow-hidden">
         <div ref={horizontalRef} className="flex h-full w-max">
-          <div className="w-[100vw] lg:w-[80vw] h-[100vh] flex items-center justify-center">
+          <div className="w-[100vw] lg:w-[40vw] h-[100vh] flex items-center justify-center">
             <div className="grid grid-cols-1 lg:grid-cols-[4fr_6fr] h-full w-full p-1">
               <div className="w-full h-full flex justify-center items-center">
                 <div className=" w-[200px] h-[220px] lg:w-[230px] lg:h-[250px] xl:w-[270px] xl:h-[290px] relative">
@@ -137,7 +139,7 @@ export default function Roadmap() {
               </div>
             </div>
           </div>
-          <div className="w-[100vw] h-[100vh] flex items-center justify-center">
+          <div className="w-[100vw] lg:w-[40vw] h-[100vh] flex items-center justify-center">
             <div className="grid grid-cols-1 lg:grid-cols-[4fr_6fr] h-full w-full p-1">
               <div className="w-full h-full flex justify-center items-center">
                 <div className=" w-[200px] h-[220px] lg:w-[230px] lg:h-[250px] xl:w-[270px] xl:h-[290px] relative">
@@ -171,7 +173,7 @@ export default function Roadmap() {
               </div>
             </div>
           </div>
-          <div className="w-[100vw] h-[100vh] flex items-center justify-center">
+          <div className="w-[100vw] lg:w-[40vw] h-[100vh] flex items-center justify-center">
             <div className="grid grid-cols-1 lg:grid-cols-[4fr_6fr] h-full w-full p-1">
               <div className="w-full h-full flex justify-center items-center">
                 <div className=" w-[200px] h-[220px] lg:w-[230px] lg:h-[250px] xl:w-[270px] xl:h-[290px] relative">
