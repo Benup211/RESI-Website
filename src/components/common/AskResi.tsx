@@ -2,8 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Dialog, DialogTrigger } from "@radix-ui/react-dialog";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { EarlyAccessForm } from "./EarlyAccessForm";
 
 // Configuration for typewriter animation
 const TYPEWRITER_CONFIG = {
@@ -91,13 +93,18 @@ export default function AskResi() {
           onKeyDown={handleKeyDown}
           className="pr-14 h-12 bg-muted/50 border-0 rounded-full text-black font-medium placeholder:text-gray-600"
         />
-        <Button
-          size="icon"
-          onClick={handleSubmit}
-          className="absolute right-1 top-1/2 -translate-y-1/2 h-10 w-18 rounded-4xl bg-primary hover:bg-primary/90 bg-gradient-to-br from-[#293EAC] to-[#080D23]"
-        >
-          <Image src={"/icon/button-resi.svg"} alt="resi icon" width={23} height={23} />
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button
+              size="icon"
+              onClick={handleSubmit}
+              className="absolute right-1 top-1/2 -translate-y-1/2 h-10 w-18 rounded-4xl bg-primary hover:bg-primary/90 bg-gradient-to-br from-[#293EAC] to-[#080D23] cursor-pointer"
+            >
+              <Image src={"/icon/button-resi.svg"} alt="resi icon" width={23} height={23} />
+            </Button>
+          </DialogTrigger>
+          <EarlyAccessForm />
+        </Dialog>
       </div>
     </div>
   );
