@@ -36,6 +36,7 @@ export default function LandingPage() {
   const rotateFrames = thetaRange.map(t => -t * (180 / Math.PI) * 0.6);
   // 1.5x multiplier makes it spin a bit faster (adjust freely)
 
+  // For the div that contains the "Questions about Real Estate? Ask Resi." text
   const xFramesDiv = thetaRange.map(t => radius * Math.sin(t)).reverse();
   const yFramesDiv = thetaRange.map(t => -radius * (1 - Math.cos(t))).reverse();
   const rotateFramesDiv = thetaRange.map(t => 360 + (t * (180 / Math.PI))).reverse();
@@ -173,7 +174,6 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Incoming Animated Div (AskResi) */}
           <motion.div
             className={"absolute top-[50%] lg:top-[30%] xl:top-[35%] left-1/2 -translate-x-1/2 z-20 text-white flex-col items-center justify-center text-center gap-4 w-[80%] lg:w-auto"}
             initial={false}
@@ -195,11 +195,11 @@ export default function LandingPage() {
             transition={
               clicked
                 ? {
-                  duration: exploreNowAnimationDuration, // you can adjust between 0.8 – 3 for desired speed
+                  duration: 0.8,
                   ease: "easeInOut",
                 }
                 : {
-                  duration: 0.2,
+                  duration: exploreNowAnimationDuration,
                 }
             }
           >
