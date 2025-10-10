@@ -20,6 +20,28 @@ const syne = Syne({
 
 export default function LandingPage() {
   const [isHovered, setIsHovered] = useState(false);
+  const [clicked, setClicked] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+
+  // Circular motion keyframes for top-left quadrant
+  const radius = 600; // distance of curve
+  const steps = 60; // smoothness of curve
+  const thetaRange = Array.from({ length: steps }, (_, i) => (Math.PI / 2) * (i / (steps - 1)));
+
+  // true circular path (quarter-circle up-left)
+  const xFrames = thetaRange.map(t => -radius * Math.sin(t));
+  const yFrames = thetaRange.map(t => -radius * (1 - Math.cos(t)));
+
+  // rotation keyframes – same length as motion path
+  const rotateFrames = thetaRange.map(t => -t * (180 / Math.PI) * 0.6);
+  // 1.5x multiplier makes it spin a bit faster (adjust freely)
+
+  const xFramesDiv = thetaRange.map(t => radius * Math.sin(t)).reverse();
+  const yFramesDiv = thetaRange.map(t => -radius * (1 - Math.cos(t))).reverse();
+  const rotateFramesDiv = thetaRange.map(t => 360 + (t * (180 / Math.PI))).reverse();
+
+  const exploreNowAnimationDuration = 0.3; // the less more fast
+
 
   return (
     <div className="w-full min-h-screen bg-black overflow-hidden relative">
@@ -50,99 +72,148 @@ export default function LandingPage() {
             </AnimateOnLoad>
             <div className="absolute left-1/2 -translate-x-1/2 lg:ml-8 top-[25vh] md:top-[35vh] lg:-top-85 xl:-top-100 2xl:-top-115 z-20 rounded-full">
               <AnimateOnLoad variant={imageRevealTop} delay={0.6}>
-                <motion.div
-                  className="rounded-full w-[310px] h-[350px] lg:w-[450px] lg:h-[510px] xl:w-[550px] xl:h-[600px] 2xl:w-[700px] 2xl:h-[700px] cursor-pointer"
-                  onHoverStart={() => setIsHovered(true)}
-                  onHoverEnd={() => setIsHovered(false)}
-                  animate={{
-                    scale: isHovered ? 1.2 : 1,
-                  }}
-                  transition={{
-                    duration: 1.2,
-                    ease: [0.25, 0.46, 0.45, 0.94], // Smooth ease with slight bounce for vibration
-                    type: "spring",
-                    stiffness: 80,
-                    damping: 12,
-                  }}
-                >
-                  <div className="relative w-full h-full rounded-full">
-                    <Image
-                      className="rounded-full"
-                      src="/common/earth.png"
-                      alt="Earth"
-                      fill
-                      style={{ objectFit: "contain" }}
-                      sizes="(max-width: 768px) 310px, (max-width: 1024px) 450px, (max-width: 1280px) 550px, 700px"
-                      priority
-                    />
-
-                    {/* Circular Text "Explore Now" */}
-                    <motion.div
-                      className="absolute inset-0 rounded-full"
-                      initial={{ opacity: 0 }}
-                      animate={{
-                        opacity: isHovered ? 1 : 0,
-                        scale: isHovered ? 1.2 : 1,
-                      }}
-                      transition={{
-                        opacity: { duration: 0.4 },
-                        scale: {
+                {!isHidden && (
+                  <motion.div
+                    className="rounded-full w-[310px] h-[350px] lg:w-[450px] lg:h-[510px] xl:w-[550px] xl:h-[600px] 2xl:w-[700px] 2xl:h-[700px] cursor-pointer"
+                    onHoverStart={() => !clicked && setIsHovered(true)}
+                    onHoverEnd={() => !clicked && setIsHovered(false)}
+                    onClick={() => setClicked(true)}
+                    style={{ originX: 0.5, originY: 0.5 }} // rotate around own center
+                    animate={
+                      clicked
+                        ? {
+                          x: xFrames,
+                          y: yFrames,
+                          rotate: rotateFrames,
+                          opacity: [1, 0.9, 0.6, 0.3, 0],
+                          scale: [1, 0.98, 0.9, 0.8],
+                        }
+                        : {
+                          scale: isHovered ? 1.2 : 1,
+                          rotate: 0,
+                        }
+                    }
+                    transition={
+                      clicked
+                        ? {
+                          duration: exploreNowAnimationDuration,
+                          ease: "easeInOut",
+                          onComplete: () => setIsHidden(true),
+                        }
+                        : {
                           duration: 1.2,
+                          ease: [0.25, 0.46, 0.45, 0.94],
                           type: "spring",
                           stiffness: 80,
                           damping: 12,
                         }
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 200 200"
-                        className="w-full h-full rounded-full"
-                        style={{ transform: "rotate(-20deg)" }}
+                    }
+                  >
+                    <div className="relative w-full h-full rounded-full">
+                      <Image
+                        className="rounded-full"
+                        src="/common/earth.png"
+                        alt="Earth"
+                        fill
+                        style={{ objectFit: "contain" }}
+                        sizes="(max-width: 768px) 310px, (max-width: 1024px) 450px, (max-width: 1280px) 550px, 700px"
+                        priority
+                      />
+
+                      {/* Circular Text "Explore Now" */}
+                      <motion.div
+                        className="absolute inset-0 rounded-full"
+                        initial={{ opacity: 0 }}
+                        animate={{
+                          opacity: isHovered ? 1 : 0,
+                          scale: isHovered ? 1.2 : 1,
+                        }}
+                        transition={{
+                          opacity: { duration: 0.4 },
+                          scale: {
+                            duration: 1.2,
+                            type: "spring",
+                            stiffness: 80,
+                            damping: 12,
+                          },
+                        }}
                       >
-                        <defs>
-                          {/* path for circle path */}
-                          {/* to change the margin between text and circle, adjust the "m -70, 0" */}
-                          <path
-                            id="circlePath"
-                            d="M 100, 100
-                               m -70, 0 
-                               a 68,68 0 1,1 136,0
-                               a 68,68 0 1,1 -136,0"
-                          />
-                          <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="34.14%" style={{ stopColor: "#CDD5FB" }} />
-                            <stop offset="65.87%" style={{ stopColor: "#293EAC" }} />
-                          </linearGradient>
-                        </defs>
-                        <text
-                          className="text-[5px] lg:text-[6px] xl:text-[7px] 2xl:text-[8px] font-semibold tracking-[0.18em] uppercase"
-                          fill="url(#textGradient)"
+                        <svg
+                          viewBox="0 0 200 200"
+                          className="w-full h-full rounded-full"
+                          style={{ transform: "rotate(-20deg)" }}
                         >
-                          <textPath
-                            href="#circlePath"
-                            startOffset="38%"
-                            style={{ fontFamily: syne.style.fontFamily }}
+                          <defs>
+                            <path
+                              id="circlePath"
+                              d="M 100, 100
+                        m -70, 0 
+                        a 68,68 0 1,1 136,0
+                        a 68,68 0 1,1 -136,0"
+                            />
+                            <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="34.14%" style={{ stopColor: "#CDD5FB" }} />
+                              <stop offset="65.87%" style={{ stopColor: "#293EAC" }} />
+                            </linearGradient>
+                          </defs>
+                          <text
+                            className="text-[5px] lg:text-[6px] xl:text-[7px] 2xl:text-[8px] font-semibold tracking-[0.18em] uppercase"
+                            fill="url(#textGradient)"
                           >
-                            Explore Now
-                          </textPath>
-                        </text>
-                      </svg>
-                    </motion.div>
-                  </div>
-                </motion.div>
+                            <textPath href="#circlePath" startOffset="38%">
+                              Explore Now
+                            </textPath>
+                          </text>
+                        </svg>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                )}
               </AnimateOnLoad>
             </div>
           </div>
 
-          <div className="absolute top-[50%] lg:top-[30%] xl:top-[35%] left-1/2 -translate-x-1/2 z-20 text-white flex-col items-center justify-center text-center gap-4 w-[80%] lg:w-auto hidden">
-            <h2 className={`${syne.className} font-semibold text-[15px] lg:text-2xl xl:text-3xl 2xl:text-5xl`}>
+          {/* Incoming Animated Div (AskResi) */}
+          <motion.div
+            className={"absolute top-[50%] lg:top-[30%] xl:top-[35%] left-1/2 -translate-x-1/2 z-20 text-white flex-col items-center justify-center text-center gap-4 w-[80%] lg:w-auto"}
+            initial={false}
+            animate={
+              clicked
+                ? {
+                  // Now it travels inward (top-right → center)
+                  x: xFramesDiv,
+                  y: yFramesDiv,
+                  rotate: rotateFramesDiv,
+                  opacity: [0, 0.6, 1],
+                  scale: [0.8, 0.95, 1],
+                }
+                : {
+                  opacity: 0,
+                  scale: 0.8,
+                }
+            }
+            transition={
+              clicked
+                ? {
+                  duration: exploreNowAnimationDuration, // you can adjust between 0.8 – 3 for desired speed
+                  ease: "easeInOut",
+                }
+                : {
+                  duration: 0.2,
+                }
+            }
+          >
+            <h2
+              className={`${syne.className} font-semibold text-[15px] lg:text-2xl xl:text-3xl 2xl:text-5xl`}
+            >
               Questions about Real Estate?{" "}
               <span className="bg-gradient-to-r from-[#C4CEFF] via-[#9C70D5] to-[#3753E4] bg-clip-text text-transparent">
                 Ask Resi.
               </span>
             </h2>
             <AskResi />
-          </div>
+          </motion.div>
+
 
           <div className="order-2 lg:order-1 flex items-center justify-center lg:justify-start lg:px-12 xl:px-14 2xl:px-20 h-[15vh] lg:h-auto text-white">
             <AnimateOnLoad variant={subtleRiseUp} delay={0.6}>
