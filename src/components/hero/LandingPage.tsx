@@ -6,6 +6,7 @@ import { imageRevealTop, subtleRiseUp, textRevealBottom } from "@/lib/animation"
 import { motion } from "framer-motion";
 import { useState } from "react";
 import AskResi from "../common/AskResi";
+import { FlashlightText } from "../animations/FlashlightText";
 
 const anton = Anton({
   variable: "--font-anton",
@@ -65,10 +66,12 @@ export default function LandingPage() {
                 className={`${anton.className} text-[4rem] lg:text-[7.9rem] xl:text-[10rem] 2xl:text-[12.2vw] font-bold origin-center lg:scale-y-[1.5] mt-25 lg:mt-0
               bg-[url("/common/noise.svg")] bg-repeat bg-clip-text text-blue-900`}
               >
-                REAL ESTATE <br className="block lg:hidden" />
-                <span className="text-[7rem] lg:text-[7.9rem] xl:text-[10rem] 2xl:text-[12.2vw] leading-[1]">
-                  ORACLE
-                </span>
+                <FlashlightText delay={1000} spotlightSize={150} intensity={5}>
+                  REAL ESTATE <br className="block lg:hidden" />
+                  <span className="text-[7rem] lg:text-[7.9rem] xl:text-[10rem] 2xl:text-[12.2vw] leading-[1]">
+                    ORACLE
+                  </span>
+                </FlashlightText>
               </h1>
             </AnimateOnLoad>
             <div className="absolute left-1/2 -translate-x-1/2 lg:ml-8 top-[25vh] md:top-[35vh] lg:-top-85 xl:-top-100 2xl:-top-115 z-20 rounded-full">
