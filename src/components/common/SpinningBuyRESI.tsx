@@ -32,17 +32,17 @@ export default function SpinningBuyRESI() {
             return (
               <span
                 key={index}
-                className={`absolute text-[#010307] text-[12px] font-extrabold ${syne.className} tracking-[4%] leading-[1.2] p-1`}
+                className={`absolute text-[#010307] text-[12px] font-[750] p-1 tracking-normal ${syne.className}`}
                 style={{
                   left: "50%",
                   top: "50%",
                   transform: `
-                      translate(-50%, -50%)
-                      rotate(${angle}deg)
-                      translateY(-${radius}px)
-                    `,
+                         translate(-50%, -50%)
+                         rotate(${angle}deg)
+                         translateY(-${radius}px)
+                       `,
                   transformOrigin: "center center",
-                  letterSpacing: "-0.01em",
+                  letterSpacing: "0.02em",
                 }}
               >
                 {char}
