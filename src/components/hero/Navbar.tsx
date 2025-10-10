@@ -22,7 +22,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-10 left-1/2 -translate-x-1/2 z-[999] px-8 py-2 rounded-[2rem] border border-white/20 transition-all duration-700 shadow-[0_0_20px_rgba(51,79,215,0.3)] ${isTransparent ? "bg-white/10 backdrop-blur-[4px]" : "bg-[linear-gradient(to_bottom_right,_rgba(51,78,215,1)_20%,_rgba(0,0,0,1)_99%)]"}`}
+      className={`fixed top-10 left-1/2 -translate-x-1/2 z-[999] px-8 py-2 rounded-xl border border-white/20 transition-all duration-700 shadow-[0_0_20px_rgba(51,79,215,0.3)] ${isTransparent ? "bg-white/10 backdrop-blur-[4px]" : "bg-[linear-gradient(to_bottom_right,_rgba(51,78,215,1)_20%,_rgba(0,0,0,1)_99%)]"}`}
     >
       <nav className="flex justify-between items-center w-[300px] lg:w-[480px]">
         <div className="flex justify-center items-center gap-1">
