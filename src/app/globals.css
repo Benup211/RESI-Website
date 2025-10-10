@@ -5,6 +5,7 @@
 
 @theme{
   --breakpoint-xz: 24rem;
+  --breakpoint-xx: 90rem;
 }
 
 @theme inline {

@@ -19,14 +19,16 @@ export default function EnterResi() {
         <div className="grid grid-rows-1 h-full">
           <div className="relative">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full lg:w-[35vw] xl:w-[30vw] h-full">
-              <Image
-                src="/common/resi-3d.svg"
-                alt="resi logo 3d"
-                fill
-                loading="lazy"
-                style={{ objectFit: "contain" }}
-                className="absolute z-2"
-              />
+              <div className="absolute -top-4 md:-top-10 lg:-top-6 xl:-top-10 xx:-top-16 2xl:-top-20  left-0 w-full h-full">
+                <Image
+                  src="/common/resi-3d.svg"
+                  alt="resi logo 3d"
+                  fill
+                  loading="lazy"
+                  style={{ objectFit: "contain" }}
+                  className="absolute z-2"
+                />
+              </div>
               <div className="absolute right-5 md:right-0 top-4/12 min-w-[65px] min-h-[72px] md:min-w-[144px] md:min-h-[125px] lg:min-w-[6vw] lg:min-h-[5vw] lg:w-[6vw] lg:h-[5vw]">
                 <Image
                   src="/common/ball-3d.svg"
