@@ -1,5 +1,6 @@
 import { Syne } from "next/font/google";
 import Image from "next/image";
+import SpinningBuyRESI from "../common/SpinningBuyRESI";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -65,6 +66,9 @@ export default function FlyWheel() {
           </div>
         </div>
         <div className="w-full h-full relative">
+          <div className="absolute left-1/2 top-1/2 -translate-1/2 text-white text-xl">
+            <SpinningBuyRESI/>
+          </div>
           <div className="absolute top-1/2 left-1/2 -translate-1/2 w-[250px] h-[300px] md:w-[550px] md:h-[450px] xl:w-[600px] xl:h-[500px] mx-auto">
             <div className="relative w-[80%] h-[80%] md:w-[70%] md:h-[70%] top-1/2 left-1/2 -translate-1/2">
               <Image
