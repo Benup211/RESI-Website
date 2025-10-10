@@ -60,38 +60,39 @@ export default function LandingPage() {
             className="relative order-1 lg:order-3 lg:col-span-2 p-8 text-center flex items-start justify-center
                 h-[70vh] lg:h-auto"
           >
-            <AnimateOnLoad variant={textRevealBottom} delay={1}>
-              <FlashlightText delay={1000} spotlightSize={200} intensity={5}>
+            <FlashlightText delay={1000} spotlightSize={200} intensity={5}>
+              <AnimateOnLoad variant={textRevealBottom} delay={1}>
                 <h1
-                  className={`${anton.className} text-[4rem] lg:text-[7.9rem] xl:text-[10rem] 2xl:text-[12.2vw] font-bold origin-center lg:scale-y-[1.5] mt-25 lg:mt-0`}
+                  className={`${anton.className} text-[4rem] lg:text-[7.9rem] xl:text-[10rem] xx:text-[11rem] 2xl:text-[15rem] font-bold origin-center lg:scale-y-[1.5] mt-25 lg:mt-0`}
                 >
                   <span
                     style={{
-                      backgroundImage:
-                        "url('/common/noise.svg'), linear-gradient(180deg, #DDEDFF 0%, #77A6DD 33%, #4472BE 56%, #13226B 100%)",
+                      backgroundImage: `
+                      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter></defs><g filter='url(%23n)'><rect width='100%' height='100%' fill='black' opacity='0.12'/></g></svg>"),
+                      linear-gradient(180deg, #DDEDFF 0%, #77A6DD 33%, #4472BE 56%, #13226B 100%)
+                      `,
                       backgroundSize: "200px 200px, 100%",
                       backgroundBlendMode: "overlay, normal",
 
-                      /* Cross-browser text clipping */
                       WebkitBackgroundClip: "text",
                       backgroundClip: "text",
-                      MozBackgroundClip: "text", // Firefox
+                      MozBackgroundClip: "text",
 
                       WebkitTextFillColor: "transparent",
-                      color: "transparent", // Firefox needs this
+                      color: "transparent",
 
                       display: "inline-block",
                     }}
                   >
                     REAL ESTATE <br className="block lg:hidden" />
-                    <span className="text-[3.5rem] lg:text-[7.9rem] xl:text-[10rem] 2xl:text-[12.2vw] leading-[1]">
+                    <span className="text-[4.5rem] lg:text-[7.9rem] xl:text-[10rem] xx:text-[11rem] 2xl:text-[15rem] leading-[1]">
                       ORACLE
                     </span>
                   </span>
                 </h1>
-              </FlashlightText>
-            </AnimateOnLoad>
-            <div className="absolute left-1/2 -translate-x-1/2 lg:ml-8 top-[25vh] md:top-[35vh] lg:-top-85 xl:-top-100 2xl:-top-115 z-20 rounded-full">
+              </AnimateOnLoad>
+            </FlashlightText>
+            <div className="absolute left-1/2 -translate-x-1/2 lg:ml-8 top-[25vh] md:top-[35vh] lg:-top-[40vh] xl:-top-[40vh] xx:-top-[40vh] 2xl:-top-[110%] z-20 rounded-full">
               <AnimateOnLoad variant={imageRevealTop} delay={0.6}>
                 {!isHidden && (
                   <motion.div
@@ -99,45 +100,44 @@ export default function LandingPage() {
                     onHoverStart={() => !clicked && setIsHovered(true)}
                     onHoverEnd={() => !clicked && setIsHovered(false)}
                     onClick={() => setClicked(true)}
-                    style={{ originX: 0.5, originY: 0.5 }} // rotate around own center
+                    style={{ originX: 0.5, originY: 0.5 }}
                     animate={
                       clicked
                         ? {
-                            x: xFrames,
-                            y: yFrames,
-                            rotate: rotateFrames,
-                            opacity: [1, 0.9, 0.6, 0.3, 0],
-                            scale: [1, 0.98, 0.9, 0.8],
-                          }
+                          x: xFrames,
+                          y: yFrames,
+                          rotate: rotateFrames,
+                          opacity: [1, 0.9, 0.6, 0.3, 0],
+                          scale: [1, 0.98, 0.9, 0.8],
+                        }
                         : {
-                            scale: isHovered ? 1.2 : 1,
-                            rotate: 0,
-                          }
+                          scale: isHovered ? 1.2 : 1,
+                          rotate: 0,
+                        }
                     }
                     transition={
                       clicked
                         ? {
-                            duration: exploreNowAnimationDuration,
-                            ease: "easeInOut",
-                            onComplete: () => setIsHidden(true),
-                          }
+                          duration: exploreNowAnimationDuration,
+                          ease: "easeInOut",
+                          onComplete: () => setIsHidden(true),
+                        }
                         : {
-                            duration: 1.2,
-                            ease: [0.25, 0.46, 0.45, 0.94],
-                            type: "spring",
-                            stiffness: 80,
-                            damping: 12,
-                          }
+                          duration: 1.2,
+                          ease: [0.25, 0.46, 0.45, 0.94],
+                          type: "spring",
+                          stiffness: 80,
+                          damping: 12,
+                        }
                     }
                   >
-                    <div className="relative w-full h-full rounded-full">
+                    <div className="relative w-full h-full max-w-[60vw] max-h-[70vh] rounded-full mx-auto">
                       <Image
                         className="rounded-full"
                         src="/common/earth.png"
                         alt="Earth"
                         fill
                         style={{ objectFit: "contain" }}
-                        sizes="(max-width: 768px) 310px, (max-width: 1024px) 450px, (max-width: 1280px) 550px, 700px"
                         priority
                       />
 
@@ -196,44 +196,46 @@ export default function LandingPage() {
 
           <motion.div
             className={
-              "absolute top-[50%] lg:top-[30%] xl:top-[35%] left-1/2 -translate-x-1/2 z-20 text-white flex-col items-center justify-center text-center gap-4 w-[80%] lg:w-auto"
+              "absolute top-[50%] lg:top-[30%] xl:top-[35%] left-1/2 -translate-x-1/2 z-20 text-[#CAD1F3] flex-col items-center justify-center text-center w-[80%] lg:w-auto "
             }
             initial={false}
             animate={
               clicked
                 ? {
-                    // Now it travels inward (top-right → center)
-                    x: xFramesDiv,
-                    y: yFramesDiv,
-                    rotate: rotateFramesDiv,
-                    opacity: [0, 0.6, 1],
-                    scale: [0.8, 0.95, 1],
-                  }
+                  // Now it travels inward (top-right → center)
+                  x: xFramesDiv,
+                  y: yFramesDiv,
+                  rotate: rotateFramesDiv,
+                  opacity: [0, 0.6, 1],
+                  scale: [0.8, 0.95, 1],
+                }
                 : {
-                    opacity: 0,
-                    scale: 0.8,
-                  }
+                  opacity: 0,
+                  scale: 0.8,
+                }
             }
             transition={
               clicked
                 ? {
-                    duration: 0.8,
-                    ease: "easeInOut",
-                  }
+                  duration: 0.8,
+                  ease: "easeInOut",
+                }
                 : {
-                    duration: exploreNowAnimationDuration,
-                  }
+                  duration: exploreNowAnimationDuration,
+                }
             }
           >
             <h2
-              className={`${syne.className} font-semibold text-[15px] lg:text-2xl xl:text-3xl 2xl:text-5xl`}
+              className={`${syne.className} font-semibold text-[15px] lg:text-2xl xl:text-3xl 2xl:text-5xl mb-2`}
             >
               Questions about Real Estate?{" "}
               <span className="bg-gradient-to-r from-[#C4CEFF] via-[#9C70D5] to-[#3753E4] bg-clip-text text-transparent">
                 Ask Resi.
               </span>
             </h2>
-            <AskResi />
+            <div className="flex justify-center items-center">
+              <AskResi />
+            </div>
           </motion.div>
 
           <div className="order-2 lg:order-1 flex items-center justify-center lg:justify-start lg:px-12 xl:px-14 2xl:px-20 h-[15vh] lg:h-auto text-white">
