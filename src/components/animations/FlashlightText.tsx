@@ -24,15 +24,15 @@ export const FlashlightText = ({
 
   // Clamp intensity between 1-10 and calculate values
   const clampedIntensity = Math.max(1, Math.min(10, intensity));
-  
+
   // Calculate brightness based on intensity (1.2x to 2.5x range)
   const brightness = 1 + (clampedIntensity / 10) * 1.5;
-  
+
   // Calculate glow opacity based on intensity (0.2 to 0.7 range)
   const glowOpacity = 0.15 + (clampedIntensity / 10) * 0.55;
-  
+
   // Calculate contrast based on intensity (1.0 to 1.5 range)
-  const contrast = 1 + (clampedIntensity / 20);
+  const contrast = 1 + clampedIntensity / 20;
 
   // Enable flashlight after animation delay
   useEffect(() => {
@@ -45,7 +45,7 @@ export const FlashlightText = ({
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current || !isEnabled) return;
-    
+
     const rect = containerRef.current.getBoundingClientRect();
     setMousePosition({
       x: e.clientX - rect.left,
@@ -54,15 +54,9 @@ export const FlashlightText = ({
   };
 
   return (
-    <div
-      ref={containerRef}
-      className={`relative ${className}`}
-      onMouseMove={handleMouseMove}
-    >
+    <div ref={containerRef} className={`relative ${className}`} onMouseMove={handleMouseMove}>
       {/* Original text layer - always visible */}
-      <div className="relative z-10">
-        {children}
-      </div>
+      <div className="relative z-10">{children}</div>
 
       {/* Illuminated text layer - adapts to any text color */}
       {isEnabled && (
@@ -99,7 +93,7 @@ export const FlashlightText = ({
               style={{
                 maskImage: `radial-gradient(circle ${spotlightSize * 0.6}px at ${mousePosition.x}px ${mousePosition.y}px, black 0%, transparent 50%)`,
                 WebkitMaskImage: `radial-gradient(circle ${spotlightSize * 0.6}px at ${mousePosition.x}px ${mousePosition.y}px, black 0%, transparent 50%)`,
-                opacity: (clampedIntensity - 6) / 4 * 0.3,
+                opacity: ((clampedIntensity - 6) / 4) * 0.3,
               }}
             >
               <div className="absolute inset-0 bg-white mix-blend-overlay" />

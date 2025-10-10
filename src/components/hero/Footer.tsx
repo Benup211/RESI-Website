@@ -46,8 +46,8 @@ export default function Footer() {
 
       <div
         className="absolute bottom-[0%] right-[0%] w-[60%] h-[15%] rounded-full pointer-events-none blur-[90px] opacity-80"
-        style={{background: "radial-gradient(circle, #5D87EF 0%, transparent 100%)"}}>
-      </div>
+        style={{ background: "radial-gradient(circle, #5D87EF 0%, transparent 100%)" }}
+      ></div>
 
       <div className="relative z-10 grid grid-rows-[9fr_0.8fr] xl:grid-rows-[9fr_1fr] h-full">
         <div className="grid grid-cols-1 xl:grid-cols-[6fr_4fr] 2xl:grid-cols-[7fr_3fr] h-full">

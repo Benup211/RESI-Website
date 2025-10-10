@@ -34,8 +34,7 @@ export default function FlyWheel() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background:
-            "linear-gradient(to top,rgba(0, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 65%",
+          background: "linear-gradient(to top,rgba(0, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 65%",
         }}
       />
 
@@ -67,7 +66,7 @@ export default function FlyWheel() {
         </div>
         <div className="w-full h-full relative">
           <div className="absolute left-1/2 top-1/2 -translate-1/2 text-white text-xl">
-            <SpinningBuyRESI/>
+            <SpinningBuyRESI />
           </div>
           <div className="absolute top-1/2 left-1/2 -translate-1/2 w-[250px] h-[300px] md:w-[550px] md:h-[450px] xl:w-[600px] xl:h-[500px] mx-auto">
             <div className="relative w-[80%] h-[80%] md:w-[70%] md:h-[70%] top-1/2 left-1/2 -translate-1/2">

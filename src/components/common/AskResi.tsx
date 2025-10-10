@@ -33,27 +33,30 @@ export default function AskResi() {
     }
 
     const currentQuestion = QUESTIONS[currentQuestionIndex];
-    
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        if (charIndex < currentQuestion.length) {
-          setPlaceholder(currentQuestion.substring(0, charIndex + 1));
-          setCharIndex(charIndex + 1);
+
+    const timer = setTimeout(
+      () => {
+        if (!isDeleting) {
+          if (charIndex < currentQuestion.length) {
+            setPlaceholder(currentQuestion.substring(0, charIndex + 1));
+            setCharIndex(charIndex + 1);
+          } else {
+            setTimeout(() => {
+              setIsDeleting(true);
+            }, TYPEWRITER_CONFIG.delayBeforeDeleting);
+          }
         } else {
-          setTimeout(() => {
-            setIsDeleting(true);
-          }, TYPEWRITER_CONFIG.delayBeforeDeleting);
+          if (charIndex > 0) {
+            setPlaceholder(currentQuestion.substring(0, charIndex - 1));
+            setCharIndex(charIndex - 1);
+          } else {
+            setIsDeleting(false);
+            setCurrentQuestionIndex((prev) => (prev + 1) % QUESTIONS.length);
+          }
         }
-      } else {
-        if (charIndex > 0) {
-          setPlaceholder(currentQuestion.substring(0, charIndex - 1));
-          setCharIndex(charIndex - 1);
-        } else {
-          setIsDeleting(false);
-          setCurrentQuestionIndex((prev) => (prev + 1) % QUESTIONS.length);
-        }
-      }
-    }, isDeleting ? TYPEWRITER_CONFIG.deletingSpeed : TYPEWRITER_CONFIG.typingSpeed);
+      },
+      isDeleting ? TYPEWRITER_CONFIG.deletingSpeed : TYPEWRITER_CONFIG.typingSpeed
+    );
 
     return () => clearTimeout(timer);
   }, [charIndex, currentQuestionIndex, isDeleting, userInput]);
@@ -93,12 +96,7 @@ export default function AskResi() {
           onClick={handleSubmit}
           className="absolute right-1 top-1/2 -translate-y-1/2 h-10 w-18 rounded-4xl bg-primary hover:bg-primary/90 bg-gradient-to-br from-[#293EAC] to-[#080D23]"
         >
-          <Image
-            src={"/icon/button-resi.svg"}
-            alt="resi icon"
-            width={23}
-            height={23}
-          />
+          <Image src={"/icon/button-resi.svg"} alt="resi icon" width={23} height={23} />
         </Button>
       </div>
     </div>

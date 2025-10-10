@@ -11,7 +11,6 @@ const syne = Syne({
 
 export default function SpinningBuyRESI() {
   const text = "BUY RESI TOKEN·BUY RESI TOKEN·";
-  const characters = text.split("");
 
   return (
     <div className="relative w-30 h-30">
@@ -24,38 +23,25 @@ export default function SpinningBuyRESI() {
           ease: "linear",
         }}
       >
-        <div className="relative w-full h-full">
-          {characters.map((char, index) => {
-            const angle = (index * 360) / characters.length;
-            const radius = 50;
-
-            return (
-              <span
-                key={index}
-                className={`absolute text-[#010307] text-[12px] font-extrabold ${syne.className} tracking-[4%] leading-[1.2] p-1`}
-                style={{
-                  left: "50%",
-                  top: "50%",
-                  transform: `
-                      translate(-50%, -50%)
-                      rotate(${angle}deg)
-                      translateY(-${radius}px)
-                    `,
-                  transformOrigin: "center center",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                {char}
-              </span>
-            );
-          })}
-        </div>
+        <svg className="absolute inset-0 w-full h-full" viewBox="10 13 175 175">
+          <defs>
+            <path id="circlePath" d="M 150,150 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+          </defs>
+          <text
+            className={`text-[13px] font-bold fill-black ${syne.className} font-extrabold`}
+            letterSpacing="0.14em"
+          >
+            <textPath href="#circlePath" startOffset="0%">
+              {text}
+            </textPath>
+          </text>
+        </svg>
       </motion.div>
 
       <div
         className="absolute inset-[18px] rounded-full bg-gradient-to-br from-[#5B7FC7] to-[#7A9EDD] flex items-center justify-center"
         style={{
-          boxShadow: "inset 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 -4px 10px rgba(0, 0, 0, 0.2)"
+          boxShadow: "inset 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 -4px 10px rgba(0, 0, 0, 0.2)",
         }}
       >
         <div className="w-10 h-10 rounded-2xl flex items-center justify-center relative">
