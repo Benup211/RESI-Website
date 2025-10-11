@@ -1,14 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Syne } from "next/font/google";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-});
 
 export default function SpinningBuyRESI() {
   const [isMounted, setIsMounted] = useState(false);
@@ -17,10 +11,6 @@ export default function SpinningBuyRESI() {
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  if (!isMounted) {
-    return <div className="relative w-30 h-30" />;
-  }
 
   return (
     <div className="relative w-30 h-30">
@@ -33,19 +23,21 @@ export default function SpinningBuyRESI() {
           ease: "linear",
         }}
       >
-        <svg className="absolute inset-0 w-full h-full" viewBox="10 13 175 175">
-          <defs>
-            <path id="circlePath" d="M 150,150 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
-          </defs>
-          <text
-            className={`text-[13px] font-bold fill-black ${syne.className} font-extrabold`}
-            letterSpacing="0.14em"
-          >
-            <textPath href="#circlePath" startOffset="0%">
-              {text}
-            </textPath>
-          </text>
-        </svg>
+        {isMounted && (
+          <svg className="absolute inset-0 w-full h-full" viewBox="10 13 175 175">
+            <defs>
+              <path
+                id="circlePath"
+                d="M 150,150 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"
+              />
+            </defs>
+            <text className={"text-[16px] fill-black font-[800]"} letterSpacing="0.30em">
+              <textPath href="#circlePath" startOffset="0%">
+                {text}
+              </textPath>
+            </text>
+          </svg>
+        )}
       </motion.div>
 
       <div

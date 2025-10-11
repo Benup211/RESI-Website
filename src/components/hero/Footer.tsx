@@ -52,12 +52,12 @@ export default function Footer() {
       <div className="relative z-10 grid grid-rows-[9fr_0.8fr] xl:grid-rows-[9fr_1fr] h-full">
         <div className="grid grid-cols-1 xl:grid-cols-[6fr_4fr] 2xl:grid-cols-[7fr_3fr] h-full">
           <div className="order-1 xl:order-2 h-auto lg:h-full mb-10">
-            <div className="lg:p-6 text-white h-full flex items-end justify-center">
+            <div className="lg:p-6 text-white h-full flex items-end 2xl:items-center justify-center">
               <ContactForm />
             </div>
           </div>
           <div className="order-2 lg:order-1 h-auto lg:h-full">
-            <div className="grid grid-rows-[5fr_2fr] lg:grid-rows-[7fr_3fr] xl:grid-rows-[6fr_4fr] 2xl:grid-rows-[5fr_5fr] 3xl:grid-rows-[4fr_6fr] h-full">
+            <div className="grid grid-rows-[5fr_2fr] lg:grid-rows-[7fr_3fr] xl:grid-rows-[6fr_4fr] 2xl:grid-rows-[5fr_5fr] 3xl:grid-rows-[4.5fr_5.5fr] h-full">
               <div className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-[1fr_1fr_0.8fr_0.8fr] gap-2 xl:gap-4 mb-10 lg:mb-0 p-2 lg:p-8 xl:p-[1.7vw] self-end">
                 <div className="order-1 xl:order-1 flex flex-col items-start justify-start text-white">
                   <h3 className={`${worksans.className} font-bold text-[1rem] mb-2`}>SOLUTIONS</h3>

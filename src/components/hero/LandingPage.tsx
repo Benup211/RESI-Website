@@ -140,7 +140,7 @@ export default function LandingPage() {
             <FlashlightText delay={1000} spotlightSize={200} intensity={5}>
               <AnimateOnLoad variant={textRevealBottom} delay={1}>
                 <h1
-                  className={`${anton.className} text-[4rem] lg:text-[7.9rem] xl:text-[10rem] xx:text-[11rem] 2xl:text-[12rem] 3xl:text-[13rem] font-bold origin-center lg:scale-y-[1.5] mt-25 lg:mt-0`}
+                  className={`${anton.className} text-[4rem] lg:text-[7.9rem] xl:text-[10rem] xx:text-[11rem] 2xl:text-[12rem] 3xl:text-[14.5rem] font-bold origin-center lg:scale-y-[1.5] mt-25 lg:mt-0 cursor-pointer`}
                 >
                   <span
                     style={{
@@ -162,7 +162,7 @@ export default function LandingPage() {
                     }}
                   >
                     REAL ESTATE <br className="block lg:hidden" />
-                    <span className="text-[4.5rem] lg:text-[7.9rem] xl:text-[10rem] xx:text-[11rem] 2xl:text-[12rem] 3xl:text-[13rem] leading-[1]">
+                    <span className="text-[4.5rem] lg:text-[7.9rem] xl:text-[10rem] xx:text-[11rem] 2xl:text-[12rem] 3xl:text-[14.5rem] leading-[1]">
                       ORACLE
                     </span>
                   </span>

@@ -14,9 +14,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://resi-website-sage.vercel.app"),
   title: "RESI - Real Estate Super Intelligence",
   description:
     "Building the world's largest open real estate database through decentralized intelligence",
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/en-US",
+      "de-DE": "/de-DE",
+    },
+  },
+  openGraph: {
+    images: "/opengraph-image.png",
+  },
+  twitter: {
+    images: "/twitter-image.png"
+  }
 };
 
 export default function RootLayout({

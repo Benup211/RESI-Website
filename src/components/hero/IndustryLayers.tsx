@@ -104,16 +104,16 @@ export default function IndustryLayers() {
   return (
     <section
       ref={sectionRef}
-      className="w-full lg:h-screen relative pt-10 lg:pt-0 overflow-hidden bg-black/80"
+      className="w-full lg:h-screen relative pt-10 lg:pt-0 overflow-hidden bg-black"
     >
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-[-1] pointer-events-none"
         style={{
-          background: "linear-gradient(to bottom,rgba(0,0,0,1) 0%,rgba(0,0,0,0.1) 80%",
+          background: "linear-gradient(to top,rgba(0,0,0,1) 10%,rgba(0,0,0,0.1) 80%",
         }}
       />
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-[-1] pointer-events-none"
         style={{
           backgroundImage: "url(/common/blue-grid.svg)",
           backgroundRepeat: "repeat",
@@ -122,18 +122,26 @@ export default function IndustryLayers() {
         }}
       />
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-[-1] pointer-events-none"
         style={{
-          background: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0,0,0,0) 65%)",
+          background: "linear-gradient(to top,rgba(0, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 65%",
         }}
       />
+
       <div
+        className="absolute inset-[-1] pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom,rgba(0, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 65%",
+        }}
+      />
+
+      {/* <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
             "linear-gradient(to top,rgba(37, 56, 121,1) 0%,rgba(0,0,0,1) 25%,rgba(0, 0, 0, 0) 65%",
         }}
-      />
+      /> */}
 
       <div className="relative grid grid-rows-1 gap-0 lg:grid-rows-[1fr_3fr] xl:grid-rows-[3fr_7fr] w-full h-full">
         <div
@@ -143,12 +151,11 @@ export default function IndustryLayers() {
           <h2
             className={`bg-gradient-to-b from-[#9CB1FA] to-[#304FC0] bg-clip-text text-transparent font-bold ${syne.className} text-3xl lg:text-4xl xl:text-6xl`}
           >
-            Industry Layers of
-            <br /> Real Estate
+            On and Offchain
+            <br /> Infrastructure
           </h2>
           <p className={`text-[#CAD1F3] ${syne.className} text-base xl:text-2xl mt-3`}>
-            RESI enables the future of PropTech
-            <br /> and RWA Protocols.
+            The RESI Roadmap
           </p>
         </div>
 

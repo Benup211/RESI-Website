@@ -32,14 +32,21 @@ export default function FlyWheel() {
         }}
       />
 
-      {/* Adding ring */}
       <div
+        className="absolute inset-[-1] pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom,rgba(0, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 65%",
+        }}
+      />
+
+      {/* Adding ring */}
+      {/* <div
         className="absolute inset-[-1] pointer-events-none"
         style={{
           background:
             "linear-gradient(to bottom,rgba(37, 56, 121,1) 0%,rgba(0,0,0,1) 25%,rgba(0, 0, 0, 0) 65%",
         }}
-      />
+      /> */}
 
       <div className="w-full h-full grid grid-rows-[3fr_7fr] md:grid-rows-[2fr_8fr] lg:grid-rows-[2fr_8fr] relative">
         <div className="flex justify-center items-center w-full h-full">
