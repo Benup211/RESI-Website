@@ -97,7 +97,12 @@ export default function Roadmap() {
             </h3>
           </div>
           <div ref={arrowRef} className="relative w-20 h-20 md:w-32 md:h-32 xl:w-40 xl:h-40">
-            <Image src="/icon/powered.svg" alt="resi powered icon" fill className="object-contain" />
+            <Image
+              src="/icon/powered.svg"
+              alt="resi powered icon"
+              fill
+              className="object-contain"
+            />
           </div>
         </section>
       </div>

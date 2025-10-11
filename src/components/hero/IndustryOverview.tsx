@@ -107,7 +107,12 @@ export default function IndustryOverview() {
             <div className="flex flex-col h-full w-full">
               <div className="relative backdrop-blur-[2px] bg-opacity-10 border-[2px] border-white/20 border-l-blue-800/15 border-b-blue-800/30 rounded-3xl flex items-center justify-center w-full min-w-[216px] min-h-[230px] lg:min-w-[250px] lg:min-h-[240px] 2xl:min-w-[15vw] 2xl:min-h-[25vh] text-[#CAD1F3] overflow-hidden">
                 <div className="flex flex-col justify-center items-center gap-y-10 z-10">
-                  <Image src="/icon/monitor.svg" alt="monitor icon" width={svgWidth} height={svgHeight} />
+                  <Image
+                    src="/icon/monitor.svg"
+                    alt="monitor icon"
+                    width={svgWidth}
+                    height={svgHeight}
+                  />
                   <p className={`text-center ${syne.className} text-base/tight`}>
                     Gatekept Data, High Fee
                     <br />

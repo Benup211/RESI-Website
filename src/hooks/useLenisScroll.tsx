@@ -8,12 +8,15 @@ export function useLenisScroll() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Detect mobile
+    const isMobile = window.innerWidth < 768;
+
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: isMobile ? 1.0 : 1.2, // slightly slower for mobile
       smoothWheel: true,
       syncTouch: true,
-      touchMultiplier: 1.3,
-      wheelMultiplier: 1.2,
+      touchMultiplier: isMobile ? 2.5 : 1.3, // moderate swipe scroll
+      wheelMultiplier: isMobile ? 1.5 : 1.2, // moderate wheel scroll
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
 

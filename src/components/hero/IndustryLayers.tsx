@@ -64,11 +64,14 @@ export default function IndustryLayers() {
       gsap.set(allPhases[0], { opacity: 1, scale: 1 });
       gsap.set(topTextRef.current, { y: 0, opacity: 1 });
 
+      const isMobile = window.innerWidth < 768;
+      const scrollDistance = isMobile ? 800 : 1000;
+
       const tlScroll = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: `+=${1000 * (phases.length - 1)}`,
+          end: `+=${scrollDistance * (phases.length - 1)}`,
           scrub: true,
           pin: true,
           anticipatePin: 1,

@@ -8,9 +8,9 @@ const syne = Syne({
 
 export default function EnterResi() {
   return (
-    <section className="w-full h-[60vh] md:h-[70vh] flex justify-center items-center relative -mt-1 lg:mt-0">
+    <section className="w-full h-[60vh] md:h-[70vh] flex justify-center items-center relative lg:mt-0 bg-white border-t-blue-900">
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-[-1] pointer-events-none"
         style={{
           background: "linear-gradient(to bottom,rgba(37, 56, 121,1) 0%,rgba(0,0,0,0) 75%)",
         }}

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Syne } from "next/font/google";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -10,7 +11,16 @@ const syne = Syne({
 });
 
 export default function SpinningBuyRESI() {
+  const [isMounted, setIsMounted] = useState(false);
   const text = "BUY RESI TOKEN·BUY RESI TOKEN·";
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return <div className="relative w-30 h-30" />;
+  }
 
   return (
     <div className="relative w-30 h-30">

@@ -9,15 +9,15 @@ const syne = Syne({
 
 export default function FlyWheel() {
   return (
-    <section className="w-full h-screen lg:h-[80vh] bg-black relative">
+    <section className="w-full h-screen xl:h-[90vh] 2xl:h-[80vh] bg-black relative">
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-[-1] pointer-events-none"
         style={{
-          background: "linear-gradient(to bottom,rgba(0,0,0,1) 0%,rgba(0,0,0,0.1) 80%",
+          background: "linear-gradient(to top,rgba(0,0,0,1) 10%,rgba(0,0,0,0.1) 80%",
         }}
       />
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-[-1] pointer-events-none"
         style={{
           backgroundImage: "url(/common/blue-grid.svg)",
           backgroundRepeat: "repeat",
@@ -25,14 +25,8 @@ export default function FlyWheel() {
           opacity: 0.25,
         }}
       />
-      {/* <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0,0,0,0) 65%)",
-        }}
-      /> */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-[-1] pointer-events-none"
         style={{
           background: "linear-gradient(to top,rgba(0, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 65%",
         }}
@@ -40,7 +34,7 @@ export default function FlyWheel() {
 
       {/* Adding ring */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-[-1] pointer-events-none"
         style={{
           background:
             "linear-gradient(to bottom,rgba(37, 56, 121,1) 0%,rgba(0,0,0,1) 25%,rgba(0, 0, 0, 0) 65%",
@@ -65,11 +59,26 @@ export default function FlyWheel() {
           </div>
         </div>
         <div className="w-full h-full relative">
-          <div className="absolute left-1/2 top-1/2 -translate-1/2 text-white text-xl">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-xl">
             <SpinningBuyRESI />
           </div>
-          <div className="absolute top-1/2 left-1/2 -translate-1/2 w-[250px] h-[300px] md:w-[550px] md:h-[450px] xl:w-[600px] xl:h-[500px] mx-auto">
-            <div className="relative w-[80%] h-[80%] md:w-[70%] md:h-[70%] top-1/2 left-1/2 -translate-1/2">
+          <div
+            className="absolute top-1/2 left-1/2 w-[250px] h-[300px] md:w-[550px] md:h-[450px] xl:w-[600px] xl:h-[500px] mx-auto"
+            style={{
+              transform: "translate(-50%, -50%)",
+              willChange: "transform",
+              backfaceVisibility: "hidden",
+              WebkitFontSmoothing: "subpixel-antialiased",
+            }}
+          >
+            <div
+              className="relative w-[80%] h-[80%] md:w-[70%] md:h-[70%] top-1/2 left-1/2"
+              style={{
+                transform: "translate(-50%, -50%)",
+                willChange: "transform",
+                backfaceVisibility: "hidden",
+              }}
+            >
               <Image
                 src="/mesh/circle-mesh.svg"
                 alt="circle square mesh"
@@ -158,7 +167,14 @@ export default function FlyWheel() {
             </svg>
 
             {/* icon and name */}
-            <div className="absolute text-[#CAD1F3] top-1/2 -left-[0%] md:left-[12%] -translate-1/2 flex justify-center items-center gap-2">
+            <div
+              className="absolute text-[#CAD1F3] top-1/2 -left-[0%] md:left-[12%] flex justify-center items-center gap-2"
+              style={{
+                transform: "translate(-50%, -50%)",
+                willChange: "transform",
+                backfaceVisibility: "hidden",
+              }}
+            >
               <p
                 className={`leading-[1.2] ${syne.className} text-xs xz:text-xs sm:text-base md:text-lg lg:text-xl font-semibold`}
               >
@@ -172,7 +188,14 @@ export default function FlyWheel() {
                 </div>
               </div>
             </div>
-            <div className="absolute text-[#CAD1F3] top-1/2 -right-[25%] md:-right-[2%] -translate-y-1/2 flex justify-center items-center gap-2">
+            <div
+              className="absolute text-[#CAD1F3] top-1/2 -right-[25%] md:-right-[2%] flex justify-center items-center gap-2"
+              style={{
+                transform: "translateY(-50%)",
+                willChange: "transform",
+                backfaceVisibility: "hidden",
+              }}
+            >
               <div className="rounded-full border-[1px] border-white/30 border-l-blue-800/35 border-b-blue-800/30">
                 <div className="p-3 w-full h-full rounded-full backdrop-blur-[2px] relative">
                   <div className="relative w-6 h-6 xz:w-6 xz:h-6 sm:w-8 sm:h-8 md:w-10 md:h-10">
@@ -186,7 +209,14 @@ export default function FlyWheel() {
                 Treasury
               </p>
             </div>
-            <div className="absolute text-[#CAD1F3] top-1/10 lg:top-[12%] left-1/2 -translate-1/2 flex flex-col justify-center items-center gap-2">
+            <div
+              className="absolute text-[#CAD1F3] top-0 left-1/2 flex flex-col justify-center items-center gap-2"
+              style={{
+                transform: "translateX(-50%)",
+                willChange: "transform",
+                backfaceVisibility: "hidden",
+              }}
+            >
               <p
                 className={`leading-[1.2] ${syne.className} text-xs xz:text-xs sm:text-base md:text-lg lg:text-xl font-semibold`}
               >
@@ -200,7 +230,14 @@ export default function FlyWheel() {
                 </div>
               </div>
             </div>
-            <div className="absolute text-[#CAD1F3] -bottom-[15%] md:-bottom-[7%] left-1/2 -translate-1/2 flex flex-col justify-center items-center gap-2">
+            <div
+              className="absolute text-[#CAD1F3] -bottom-[0%] md:-bottom-[0%] left-1/2 flex flex-col justify-center items-center gap-2"
+              style={{
+                transform: "translateX(-50%)",
+                willChange: "transform",
+                backfaceVisibility: "hidden",
+              }}
+            >
               <div className="rounded-full border-[1px] border-white/30 border-l-blue-800/35 border-b-blue-800/30">
                 <div className="p-3 w-full h-full rounded-full backdrop-blur-[2px] relative">
                   <div className="relative w-6 h-6 xz:w-6 xz:h-6 sm:w-8 sm:h-8 md:w-10 md:h-10">
@@ -217,7 +254,11 @@ export default function FlyWheel() {
 
             {/* description */}
             <div
-              className={`absolute text-[#CAD1F3] -left-3/12 top-[1%] md:top-1/8 md:left-0  text-right ${syne.className} text-xs lg:text-[1rem]`}
+              className={`absolute text-[#CAD1F3] -left-3/12 top-[1%] md:top-1/8 md:left-0 text-right ${syne.className} text-xs lg:text-[1rem]`}
+              style={{
+                willChange: "transform",
+                backfaceVisibility: "hidden",
+              }}
             >
               <p>
                 User feedback loops
@@ -229,6 +270,10 @@ export default function FlyWheel() {
             </div>
             <div
               className={`absolute text-[#CAD1F3] -left-3/12 bottom-[1%] md:bottom-1/12 md:left-0 text-right ${syne.className} text-xs lg:text-[1rem]`}
+              style={{
+                willChange: "transform",
+                backfaceVisibility: "hidden",
+              }}
             >
               <p>
                 Industry data feeds RESI
@@ -239,7 +284,11 @@ export default function FlyWheel() {
               </p>
             </div>
             <div
-              className={`absolute text-[#CAD1F3] -right-3/12 top-[1%] md:top-1/8 md:-right-[0]  text-left ${syne.className} text-xs lg:text-[1rem]`}
+              className={`absolute text-[#CAD1F3] -right-3/12 top-[1%] md:top-1/8 md:-right-[0] text-left ${syne.className} text-xs lg:text-[1rem]`}
+              style={{
+                willChange: "transform",
+                backfaceVisibility: "hidden",
+              }}
             >
               <p>
                 Users pay in fiat or
@@ -253,6 +302,10 @@ export default function FlyWheel() {
             </div>
             <div
               className={`absolute text-[#CAD1F3] -right-3/12 bottom-[1%] md:bottom-1/12 md:right-0 text-left ${syne.className} text-xs lg:text-[1rem]`}
+              style={{
+                willChange: "transform",
+                backfaceVisibility: "hidden",
+              }}
             >
               <p>
                 Investments and

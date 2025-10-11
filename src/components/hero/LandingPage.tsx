@@ -51,14 +51,11 @@ export default function LandingPage() {
 
   return (
     <div className="w-full min-h-screen overflow-hidden relative">
-
-
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background:
-            "linear-gradient(to bottom,rgba(12, 16, 83, 0.1) 0%,rgba(7, 18, 28, 1) 100%",
-          opacity: 0.2
+          background: "linear-gradient(to bottom,rgba(12, 16, 83, 0.1) 0%,rgba(7, 18, 28, 1) 100%",
+          opacity: 0.2,
         }}
       />
 
@@ -67,7 +64,7 @@ export default function LandingPage() {
         style={{
           background:
             "linear-gradient(to bottom,rgba(10, 22, 83, 1) 9%,rgba(23, 35, 97, 1) 34%,rgba(0, 8, 16, 1) 77%",
-          opacity: 0.5
+          opacity: 0.5,
         }}
       />
 
@@ -138,7 +135,7 @@ export default function LandingPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 w-full h-full">
           <div
             className="relative order-1 lg:order-3 lg:col-span-2 p-8 text-center flex items-start justify-center
-                h-[70vh] lg:h-auto"
+                h-[65vh] lg:h-auto"
           >
             <FlashlightText delay={1000} spotlightSize={200} intensity={5}>
               <AnimateOnLoad variant={textRevealBottom} delay={1}>
@@ -184,31 +181,31 @@ export default function LandingPage() {
                     animate={
                       clicked
                         ? {
-                          x: xFrames,
-                          y: yFrames,
-                          rotate: rotateFrames,
-                          opacity: [1, 0.9, 0.6, 0.3, 0],
-                          scale: [1, 0.98, 0.9, 0.8],
-                        }
+                            x: xFrames,
+                            y: yFrames,
+                            rotate: rotateFrames,
+                            opacity: [1, 0.9, 0.6, 0.3, 0],
+                            scale: [1, 0.98, 0.9, 0.8],
+                          }
                         : {
-                          scale: isHovered ? 1.2 : 1,
-                          rotate: 0,
-                        }
+                            scale: isHovered ? 1.2 : 1,
+                            rotate: 0,
+                          }
                     }
                     transition={
                       clicked
                         ? {
-                          duration: exploreNowAnimationDuration,
-                          ease: "easeInOut",
-                          onComplete: () => setIsHidden(true),
-                        }
+                            duration: exploreNowAnimationDuration,
+                            ease: "easeInOut",
+                            onComplete: () => setIsHidden(true),
+                          }
                         : {
-                          duration: 1.2,
-                          ease: [0.25, 0.46, 0.45, 0.94],
-                          type: "spring",
-                          stiffness: 80,
-                          damping: 12,
-                        }
+                            duration: 1.2,
+                            ease: [0.25, 0.46, 0.45, 0.94],
+                            type: "spring",
+                            stiffness: 80,
+                            damping: 12,
+                          }
                     }
                   >
                     <div className="relative w-full h-full max-w-[60vw] max-h-[70vh] rounded-full mx-auto">
@@ -283,27 +280,27 @@ export default function LandingPage() {
             animate={
               clicked
                 ? {
-                  // Now it travels inward (top-right → center)
-                  x: xFramesDiv,
-                  y: yFramesDiv,
-                  rotate: rotateFramesDiv,
-                  opacity: [0, 0.6, 1],
-                  scale: [0.8, 0.95, 1],
-                }
+                    // Now it travels inward (top-right → center)
+                    x: xFramesDiv,
+                    y: yFramesDiv,
+                    rotate: rotateFramesDiv,
+                    opacity: [0, 0.6, 1],
+                    scale: [0.8, 0.95, 1],
+                  }
                 : {
-                  opacity: 0,
-                  scale: 0.8,
-                }
+                    opacity: 0,
+                    scale: 0.8,
+                  }
             }
             transition={
               clicked
                 ? {
-                  duration: 0.8,
-                  ease: "easeInOut",
-                }
+                    duration: 0.8,
+                    ease: "easeInOut",
+                  }
                 : {
-                  duration: exploreNowAnimationDuration,
-                }
+                    duration: exploreNowAnimationDuration,
+                  }
             }
           >
             <h2
@@ -319,7 +316,7 @@ export default function LandingPage() {
             </div>
           </motion.div>
 
-          <div className="order-2 lg:order-1 flex items-center justify-center lg:justify-start lg:px-12 xl:px-14 2xl:px-20 h-[15vh] lg:h-auto text-white">
+          <div className="order-2 lg:order-1 flex items-center justify-center lg:justify-start lg:px-12 xl:px-14 2xl:px-20 h-[10vh] lg:h-auto text-white">
             <AnimateOnLoad variant={subtleRiseUp} delay={0.6}>
               <h3
                 className={`text-[1.05rem] xl:text-[1.3rem] 2xl:text-[1.5rem] text-center lg:text-start ${syne.className}`}
@@ -330,16 +327,38 @@ export default function LandingPage() {
             </AnimateOnLoad>
           </div>
 
-          <div className="order-3 lg:order-2 flex items-center justify-center lg:justify-end lg:px-12 xl:px-14 2xl:px-20 h-[15vh] lg:h-auto">
+          <div className="order-3 lg:order-2 flex flex-col lg:flex-row items-center justify-between lg:justify-end py-4 lg:px-12 xl:px-14 2xl:px-20 h-[25vh] gap-5 lg:h-auto">
             <AnimateOnLoad variant={subtleRiseUp} delay={0.6}>
               <h2
-                className={`${syne.className} text-2xl xl:text-3xl leading-[0.9] font-bold text-center lg:text-end text-white`}
+                className={`${syne.className} text-xl md:text-2xl xl:text-3xl leading-[0.9] font-bold text-center lg:text-end text-white`}
               >
                 <span className="uppercase text-[#8499FF]">Subnet 46</span>
                 <br />
-                <span className="font-normal text-xl">on Bittensor.</span>
+                <span className="font-normal text-base md:text-xl">on Bittensor.</span>
               </h2>
             </AnimateOnLoad>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                rotate: 360,
+              }}
+              transition={{
+                opacity: { duration: 0.6, delay: 0.3 },
+                scale: { duration: 0.6, delay: 0.3 },
+                rotate: { duration: 100, delay: 0.3 },
+              }}
+              className="relative w-20 h-20 md:w-25 md:h-25 xl:w-30 xl:h-30 lg:hidden block order-4 mx-auto mb-10"
+            >
+              <Image
+                src="/icon/powered-white.svg"
+                alt="resi powered icon"
+                fill
+                className="object-contain"
+              />
+            </motion.div>
           </div>
         </div>
       </div>
