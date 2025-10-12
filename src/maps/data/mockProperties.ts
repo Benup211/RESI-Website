@@ -1,0 +1,122 @@
+import { Property } from "../types/map.types";
+
+export const mockProperties: Property[] = [
+  // California Properties
+  {
+    id: "prop-1",
+    type: "house",
+    latitude: 37.7749,
+    longitude: -122.4194,
+    price: 1250000,
+    address: "123 Market St, San Francisco, CA 94103",
+    bedrooms: 3,
+    bathrooms: 2,
+    sqft: 2200,
+    status: "for-sale",
+    description: "Beautiful Victorian home in downtown SF"
+  },
+  {
+    id: "prop-2",
+    type: "land",
+    latitude: 37.8044,
+    longitude: -122.2712,
+    price: 450000,
+    address: "Land Parcel, Oakland, CA",
+    acres: 2.5,
+    status: "for-sale",
+    description: "Prime development land"
+  },
+  {
+    id: "prop-3",
+    type: "apartment",
+    latitude: 34.0522,
+    longitude: -118.2437,
+    price: 850000,
+    address: "456 Sunset Blvd, Los Angeles, CA 90028",
+    bedrooms: 2,
+    bathrooms: 2,
+    sqft: 1500,
+    status: "pending",
+    description: "Modern apartment with city views"
+  },
+  
+  // Texas Properties
+  {
+    id: "prop-4",
+    type: "house",
+    latitude: 30.2672,
+    longitude: -97.7431,
+    price: 650000,
+    address: "789 Congress Ave, Austin, TX 78701",
+    bedrooms: 4,
+    bathrooms: 3,
+    sqft: 3200,
+    status: "for-sale",
+    description: "Spacious family home"
+  },
+  {
+    id: "prop-5",
+    type: "commercial",
+    latitude: 29.7604,
+    longitude: -95.3698,
+    price: 2500000,
+    address: "Commercial Plaza, Houston, TX 77002",
+    sqft: 12000,
+    status: "for-sale",
+    description: "Prime retail space"
+  },
+  
+  // New York Properties
+  {
+    id: "prop-6",
+    type: "apartment",
+    latitude: 40.7128,
+    longitude: -74.0060,
+    price: 3500000,
+    address: "100 Wall St, New York, NY 10005",
+    bedrooms: 3,
+    bathrooms: 3,
+    sqft: 2800,
+    status: "for-sale",
+    description: "Luxury Manhattan apartment"
+  },
+  {
+    id: "prop-7",
+    type: "house",
+    latitude: 40.7580,
+    longitude: -73.9855,
+    price: 8500000,
+    address: "Times Square Area, New York, NY",
+    bedrooms: 5,
+    bathrooms: 4,
+    sqft: 4500,
+    status: "sold",
+    description: "Historic townhouse"
+  },
+  
+  // Florida Properties
+  {
+    id: "prop-8",
+    type: "house",
+    latitude: 25.7617,
+    longitude: -80.1918,
+    price: 950000,
+    address: "321 Ocean Dr, Miami, FL 33139",
+    bedrooms: 3,
+    bathrooms: 3,
+    sqft: 2400,
+    status: "for-sale",
+    description: "Beachfront property"
+  },
+  {
+    id: "prop-9",
+    type: "land",
+    latitude: 28.5383,
+    longitude: -81.3792,
+    price: 280000,
+    address: "Development Land, Orlando, FL",
+    acres: 1.8,
+    status: "for-sale",
+    description: "Near theme parks"
+  }
+];
