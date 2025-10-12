@@ -10,6 +10,18 @@ import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { X } from "lucide-react";
 import { useState, FormEvent, ChangeEvent } from "react";
+import { Work_Sans, Syne } from "next/font/google";
+import { motion } from "framer-motion";
+
+const worksans = Work_Sans({
+  variable: "--font-work-sans",
+  subsets: ["latin"],
+});
+
+const syne = Syne({
+  variable: "--font-syne",
+  subsets: ["latin"],
+});
 
 interface FormState {
   email: string;
@@ -112,14 +124,22 @@ export function EarlyAccessForm() {
         {/* Globe Image with Neomorphic Circle */}
         <div className="relative flex items-center justify-center mb-4 sm:mb-2">
           <div className="absolute w-44 h-44 sm:w-44 sm:h-44 rounded-full bg-gradient-to-br from-white/30 to-white/10 shadow-[inset_-6px_-6px_12px_rgba(255,255,255,0.3),inset_6px_6px_12px_rgba(0,0,0,0.1)] sm:shadow-[inset_-8px_-8px_16px_rgba(255,255,255,0.3),inset_8px_8px_16px_rgba(0,0,0,0.1)]" />
-          <div className="relative w-32 h-32 sm:w-32 sm:h-32 z-10">
+          <motion.div
+            className="relative w-40 h-40 z-10"
+            animate={{ y: [0, 5, 0] }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
             <Image
-              src={"/icon/earth-popup-modal.svg"}
+              src="/icon/earth-popup-modal.svg"
               alt="earth"
               fill
               style={{ objectFit: "contain" }}
             />
-          </div>
+          </motion.div>
         </div>
 
         <DialogClose className="absolute right-4 sm:right-6 top-4 sm:top-6 z-50">
@@ -131,10 +151,10 @@ export function EarlyAccessForm() {
         {formState.isSuccess ? (
           <>
             <DialogHeader className="mt-2 sm:mt-4 space-y-1.5 sm:space-y-2 text-center">
-              <DialogTitle className="text-2xl text-center sm:text-3xl font-bold text-white tracking-tight leading-tight">
+              <DialogTitle className={`${syne.className} text-2xl text-center sm:text-2xl font-semibold text-white tracking-tight leading-[1.2]`}>
                 Thanks for Signing Up
               </DialogTitle>
-              <DialogDescription className="text-white/90 text-center text-sm sm:text-base font-medium px-2">
+              <DialogDescription className={`text-white text-center px-2 ${worksans.className} leading-[1.2] text-[12px]`}>
                 We&apos;ve saved your spot and can&apos;t wait to share updates soon.
               </DialogDescription>
             </DialogHeader>
@@ -153,12 +173,12 @@ export function EarlyAccessForm() {
           <>
             {/* Form State */}
             <DialogHeader className="mt-2 sm:mt-4 space-y-1.5 sm:space-y-2 text-center">
-              <DialogTitle className="text-2xl text-center sm:text-3xl font-bold text-white tracking-tight leading-tight">
+              <DialogTitle className={`${syne.className} text-2xl text-center sm:text-2xl font-semibold text-white tracking-tight leading-[1.2]`}>
                 Get Early Access by
                 <br />
                 Signing Up
               </DialogTitle>
-              <DialogDescription className="text-white/90 text-center text-sm sm:text-base font-medium px-2">
+              <DialogDescription className={`text-white text-center px-2 ${worksans.className} leading-[1.2] text-[12px]`}>
                 Access Real Estate Data, on Demand.
               </DialogDescription>
             </DialogHeader>
@@ -174,9 +194,8 @@ export function EarlyAccessForm() {
                   value={formState.email}
                   onChange={handleEmailChange}
                   disabled={formState.isSubmitting}
-                  className={`h-11 sm:h-12 bg-white/95 border-none rounded-xl text-gray-700 placeholder:text-gray-500 text-sm sm:text-base shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1)] focus-visible:ring-2 focus-visible:ring-white/50 disabled:opacity-50 disabled:cursor-not-allowed ${
-                    formState.error ? "ring-2 ring-red-400" : ""
-                  }`}
+                  className={`h-11 sm:h-12 bg-white/95 border-none rounded-xl text-gray-700 placeholder:text-gray-500 text-sm sm:text-base shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1)] focus-visible:ring-2 focus-visible:ring-white/50 disabled:opacity-50 disabled:cursor-not-allowed ${formState.error ? "ring-2 ring-red-400" : ""
+                    }`}
                 />
                 {formState.error && (
                   <p className="text-red-200 text-xs sm:text-sm font-medium px-1">
@@ -189,7 +208,7 @@ export function EarlyAccessForm() {
               <Button
                 type="submit"
                 disabled={formState.isSubmitting}
-                className="w-full h-11 sm:h-12 bg-cyan-400 hover:bg-cyan-500 text-gray-800 font-semibold text-sm sm:text-base rounded-xl shadow-lg transition-all duration-200 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`w-full h-11 sm:h-12 bg-[#47B9FF] hover:bg-[#47B9FF]/80 text-[#152A37] font-semibold text-base rounded-xl shadow-lg transition-all duration-200 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed ${syne.className} font-semibold leading-[1.2] hover:underline`}
               >
                 {formState.isSubmitting ? "Submitting..." : "Register"}
               </Button>
