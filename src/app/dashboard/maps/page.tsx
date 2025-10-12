@@ -50,7 +50,7 @@ export default function PropertiesPage() {
             onPropertyClick: handlePropertyClick,
             onBoundsChange: (bounds: MapBounds) => {
               // necessary API call can be when there is location changes in the map
-              // console.log("making API call with the new bounds data: ",bounds)
+              // console.log("making API call with the new bounds data: ",bounds);
             },
           }}
         />
@@ -63,4 +63,4 @@ export default function PropertiesPage() {
       </div>
     </div>
   );
-}
+};

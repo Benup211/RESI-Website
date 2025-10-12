@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import React, { useState, useRef, useCallback, useEffect, useMemo } from "react";
+import { MapContainer, TileLayer } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import debounce from "lodash.debounce";
 import PropertyMarker from "./PropertyMarker";
 import { CurrentLocationMarker, MapEventListener, LayerControl } from "./MapInternalComponents";
-import { Property, MapBounds, StateData, MapEventHandlers } from "../../types/map.types";
+import { Property, MapBounds, MapEventHandlers } from "../../types/map.types";
 import { mockProperties } from "../../data/mockProperties";
 import FullscreenControl from "./FullScreenControl";
 
@@ -57,30 +57,19 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
   const mapRef = externalMapRef || internalMapRef;
 
   // Cache for API calls
-  const boundsCache = useRef<Map<string, Property[]>>(new Map());
+  // const boundsCache = useRef<Map<string, Property[]>>(new Map());
 
   // Debounced bounds change handler
   // debounced time current is 2 sec
   const debouncedTime = 2000;
-  const debouncedBoundsChange = useCallback(
-    debounce((bounds: MapBounds) => {
-      // example of map bounds output
-      //       {
-      //     "north": 32.24532861404601,
-      //     "south": 29.89304338543419,
-      //     "east": -97.07519531250001,
-      //     "west": -101.62902832031251,
-      //     "zoom": 8
-      // }
+  const handleBoundsChange = useCallback(
+    (bounds: MapBounds) => {
       setCurrentBounds(bounds);
 
       if (eventHandlers.onBoundsChange) {
         eventHandlers.onBoundsChange(bounds);
       }
 
-      // Filter properties based on bounds
-      // currently when the location changes or there is any change in the location
-      // we are updating our static  data finding
       const filtered = properties.filter(
         (prop) =>
           prop.latitude >= bounds.south &&
@@ -89,9 +78,20 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
           prop.longitude <= bounds.east
       );
       setFilteredProperties(filtered);
-    }, debouncedTime),
-    [properties, eventHandlers]
+    },
+    [properties, eventHandlers] // include all dependencies here
   );
+
+  const debouncedBoundsChange = useMemo(
+    () => debounce(handleBoundsChange, debouncedTime),
+    [handleBoundsChange, debouncedTime]
+  );
+
+  useEffect(() => {
+    return () => {
+      debouncedBoundsChange.cancel();
+    };
+  }, [debouncedBoundsChange]);
 
   const handlePropertyClick = (property: Property) => {
     if (eventHandlers.onPropertyClick) {
@@ -99,20 +99,20 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
     }
   };
 
-  const handleStateClick = (state: StateData) => {
-    if (mapRef.current && state.bounds) {
-      mapRef.current.fitBounds(state.bounds);
-    }
-    if (eventHandlers.onStateClick) {
-      eventHandlers.onStateClick(state);
-    }
-  };
+  // const handleStateClick = (state: StateData) => {
+  //   if (mapRef.current && state.bounds) {
+  //     mapRef.current.fitBounds(state.bounds);
+  //   }
+  //   if (eventHandlers.onStateClick) {
+  //     eventHandlers.onStateClick(state);
+  //   }
+  // };
 
   // Tile layer URLs (Fixed satellite URL)
   const tileLayers = {
     street: {
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>`,
+      attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a>",
     },
     satellite: {
       url: "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",

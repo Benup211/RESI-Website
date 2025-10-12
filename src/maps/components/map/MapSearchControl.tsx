@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback, forwardRef, useImperativeHandle } from "react";
+import React, { useState, useCallback, forwardRef, useImperativeHandle, useMemo } from "react";
 import debounce from "lodash.debounce";
 import { OpenStreetMapPlace } from "@/maps/types/map.types";
 
@@ -42,7 +42,7 @@ const MapSearchControl = forwardRef<MapSearchRef, MapSearchControlProps>(
 
     // Using Nominatim (OpenStreetMap) for free geocoding
     // Works for worldwide addresses but optimized for US
-    const searchLocation = useCallback(
+    const debouncedSearch = useMemo(() =>
       debounce(async (query: string) => {
         if (query.length < 3) {
           setSuggestions([]);
@@ -53,9 +53,7 @@ const MapSearchControl = forwardRef<MapSearchRef, MapSearchControlProps>(
         try {
           const response = await fetch(
             "https://nominatim.openstreetmap.org/search?" +
-              `format=json&q=${encodeURIComponent(query)}&limit=5&` +
-              "countrycodes=us&" + // Prioritize US results
-              "accept-language=en"
+            `format=json&q=${encodeURIComponent(query)}&countrycodes=us&limit=5`
           );
           const data = await response.json();
           setSuggestions(data);
@@ -66,8 +64,12 @@ const MapSearchControl = forwardRef<MapSearchRef, MapSearchControlProps>(
           setIsSearching(false);
         }
       }, 500),
-      []
-    );
+      [setSuggestions, setIsSearching]); // add actual state setters if defined outside
+
+    // Use it like this:
+    const searchLocation = useCallback((query: string) => {
+      debouncedSearch(query);
+    }, [debouncedSearch]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const query = e.target.value;
