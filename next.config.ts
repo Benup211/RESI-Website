@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
 };
 
 module.exports = {
-  transpilePackages: ['react-leaflet'],
-}
+  transpilePackages: ["react-leaflet"],
+};
 
 export default nextConfig;

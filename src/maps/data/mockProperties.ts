@@ -13,7 +13,7 @@ export const mockProperties: Property[] = [
     bathrooms: 2,
     sqft: 2200,
     status: "for-sale",
-    description: "Beautiful Victorian home in downtown SF"
+    description: "Beautiful Victorian home in downtown SF",
   },
   {
     id: "prop-2",
@@ -24,7 +24,7 @@ export const mockProperties: Property[] = [
     address: "Land Parcel, Oakland, CA",
     acres: 2.5,
     status: "for-sale",
-    description: "Prime development land"
+    description: "Prime development land",
   },
   {
     id: "prop-3",
@@ -37,9 +37,9 @@ export const mockProperties: Property[] = [
     bathrooms: 2,
     sqft: 1500,
     status: "pending",
-    description: "Modern apartment with city views"
+    description: "Modern apartment with city views",
   },
-  
+
   // Texas Properties
   {
     id: "prop-4",
@@ -52,7 +52,7 @@ export const mockProperties: Property[] = [
     bathrooms: 3,
     sqft: 3200,
     status: "for-sale",
-    description: "Spacious family home"
+    description: "Spacious family home",
   },
   {
     id: "prop-5",
@@ -63,27 +63,27 @@ export const mockProperties: Property[] = [
     address: "Commercial Plaza, Houston, TX 77002",
     sqft: 12000,
     status: "for-sale",
-    description: "Prime retail space"
+    description: "Prime retail space",
   },
-  
+
   // New York Properties
   {
     id: "prop-6",
     type: "apartment",
     latitude: 40.7128,
-    longitude: -74.0060,
+    longitude: -74.006,
     price: 3500000,
     address: "100 Wall St, New York, NY 10005",
     bedrooms: 3,
     bathrooms: 3,
     sqft: 2800,
     status: "for-sale",
-    description: "Luxury Manhattan apartment"
+    description: "Luxury Manhattan apartment",
   },
   {
     id: "prop-7",
     type: "house",
-    latitude: 40.7580,
+    latitude: 40.758,
     longitude: -73.9855,
     price: 8500000,
     address: "Times Square Area, New York, NY",
@@ -91,9 +91,9 @@ export const mockProperties: Property[] = [
     bathrooms: 4,
     sqft: 4500,
     status: "sold",
-    description: "Historic townhouse"
+    description: "Historic townhouse",
   },
-  
+
   // Florida Properties
   {
     id: "prop-8",
@@ -106,7 +106,7 @@ export const mockProperties: Property[] = [
     bathrooms: 3,
     sqft: 2400,
     status: "for-sale",
-    description: "Beachfront property"
+    description: "Beachfront property",
   },
   {
     id: "prop-9",
@@ -117,6 +117,6 @@ export const mockProperties: Property[] = [
     address: "Development Land, Orlando, FL",
     acres: 1.8,
     status: "for-sale",
-    description: "Near theme parks"
-  }
+    description: "Near theme parks",
+  },
 ];

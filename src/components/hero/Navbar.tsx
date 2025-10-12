@@ -4,6 +4,7 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import { Menu } from "lucide-react";
 import { DM_Sans, Syne } from "next/font/google";
+import Link from "next/link";
 
 const pp = localFont({ src: "../../fonts/pp-plainmedium.otf" });
 
@@ -22,7 +23,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-5 left-1/2 -translate-x-1/2 z-[999] px-8 py-2 rounded-xl border border-white/20 transition-all duration-700 shadow-[0_0_20px_rgba(51,79,215,0.3)] ${isTransparent ? "bg-white/10 backdrop-blur-[4px]" : "bg-[linear-gradient(to_bottom_right,_rgba(51,78,215,1)_20%,_rgba(0,0,0,1)_99%)]"}`}
+      className={`fixed top-4 lg:top-2 xl:top-3 left-1/2 -translate-x-1/2 z-[999] px-8 py-2 rounded-xl border border-white/20 transition-all duration-700 shadow-[0_0_20px_rgba(51,79,215,0.3)] ${isTransparent ? "bg-white/10 backdrop-blur-[4px]" : "bg-[linear-gradient(to_bottom_right,_rgba(51,78,215,1)_20%,_rgba(0,0,0,1)_99%)]"}`}
     >
       <nav className="flex justify-between items-center w-[300px] lg:w-[480px]">
         <div className="flex justify-center items-center gap-1">
@@ -31,18 +32,18 @@ export default function Navbar() {
             RESI
           </h6>
         </div>
-        <a
-          href="#"
+        <Link
+          href="/"
           className={`text-[1rem] ${dmsans.className} text-[#CAD1F3] font-medium hover:text-white cursor-pointer transition hidden lg:block`}
         >
           HOME
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          href="/dashboard"
           className={`text-[1rem] ${dmsans.className} text-[#CAD1F3] font-medium hover:text-white cursor-pointer transition hidden lg:block`}
         >
           DASHBOARD
-        </a>
+        </Link>
         <button onClick={() => setIsTransparent(!isTransparent)}>
           <Menu
             width={24}
@@ -54,6 +55,20 @@ export default function Navbar() {
 
       <div className={`${isTransparent ? "block" : "hidden"}`}>
         <div className="mt-4 py-4 border-t-1 border-t-[#FFFFFF]/20 border-0 flex flex-col lg:flex-row justify-between items-start">
+          <div className="flex justify-between w-full items-center mb-2 max-w-[90%] mx-auto lg:hidden">
+            <Link
+              href="/"
+              className={`text-[1rem] ${dmsans.className} text-[#CAD1F3] font-medium hover:text-white cursor-pointer transition block`}
+            >
+              HOME
+            </Link>
+            <Link
+              href="/dashboard"
+              className={`text-[1rem] ${dmsans.className} text-[#CAD1F3] font-medium hover:text-white cursor-pointer transition block`}
+            >
+              DASHBOARD
+            </Link>
+          </div>
           <a
             href="https://taostats.io/subnets/46/chart"
             target="_blank"

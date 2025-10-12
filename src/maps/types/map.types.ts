@@ -37,8 +37,7 @@ export interface MapEventHandlers {
   onSearchLocation?: (lat: number, lng: number, address: string) => void;
 }
 
-
-// search suggestion 
+// search suggestion
 
 export interface OpenStreetMapPlace {
   place_id: number;
