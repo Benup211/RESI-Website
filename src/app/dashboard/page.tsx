@@ -274,7 +274,7 @@ export default function Dashboard() {
       <Navbar />
       <section>
         <div className="w-full h-[10vh] lg:h-[10vh] 2xl:h-[8vh]"></div>
-        <div className="w-full h-[15vh] xz:h-[13vh] lg:h-[10vh] xl:h-[8vh] p-4 lg:px-8 flex flex-col lg:flex-row items-start justify-between lg:items-center gap-2">
+        <div className="w-full h-[15vh] lg:h-[10vh] xl:h-[8vh] p-4 lg:px-8 flex flex-col lg:flex-row items-start justify-between lg:items-center gap-2">
           <h2
             className={`font-semibold leading-[0.7] ${syne.className} text-3xl xl:text-4xl bg-gradient-to-br from-[#607AFF] via-[#BFA4FF] to-[#BF51FF] bg-clip-text text-transparent z-100`}
           >
@@ -294,7 +294,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row h-auto lg:h-[65vh] xl:h-[72vh] 2xl:h-[74vh]">
+        <div className="flex flex-col lg:flex-row h-auto lg:h-[65vh] xl:h-[68vh] 2xl:h-[72vh] py-2">
           <div
             className={`transition-all duration-500 ${
               realEstateData.length === 0
@@ -348,7 +348,7 @@ export default function Dashboard() {
             </ScrollArea>
           )}
         </div>
-        <div className="w-full h-[15vh] xl:h-[10vh] bg-black p-2 lg:py-3 lg:px-8 flex justify-center items-center">
+        <div className="w-full h-[15vh] 2xl:h-[10vh] bg-black p-2 lg:py-3 lg:px-8 flex justify-center items-center">
           <div className="w-full h-full rounded-xl overflow-hidden border-[1px] border-[#345ba3]/60 relative flex justify-center items-center p-1">
             <div
               className="absolute top-0 left-0 w-[20%] h-[150%] rounded-full pointer-events-none blur-[60px] opacity-80 z-0"
