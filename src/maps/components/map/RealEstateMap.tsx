@@ -99,7 +99,7 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
   const tileLayers = {
     street: {
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>`,
     },
     satellite: {
       url: "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",

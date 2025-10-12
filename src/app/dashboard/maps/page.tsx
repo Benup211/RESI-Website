@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import React, { useRef } from "react";
 import { RealEstateMapComponent, MapSearchControl } from "@/maps/components/map";

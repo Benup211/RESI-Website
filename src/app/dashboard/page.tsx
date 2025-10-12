@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import RealEstateCard from "@/components/common/RealEstateCard";
@@ -8,11 +9,9 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Search, Triangle, X } from "lucide-react";
 import { Work_Sans, Syne } from "next/font/google";
 import { useEffect, useState, useRef } from "react";
-import React, { } from "react";
-import { RealEstateMapComponent, MapSearchControl } from "@/maps/components/map";
-import type { MapSearchRef } from "@/maps/components/map";
+import React from "react";
+import { RealEstateMapComponent } from "@/maps/components/map";
 import type { Property, MapBounds } from "@/maps/components/map";
-
 
 const worksans = Work_Sans({
   variable: "--font-work-sans",
@@ -154,7 +153,7 @@ const MOCK_DATA: RealEstateData[] = [
 export default function Dashboard() {
   const [showSearch, setShowSearch] = useState<boolean>(false);
   const [realEstateData, setRealEstateData] = useState<RealEstateData[]>([]);
-  const [query,setQuery]=useState<String>("");
+  const [query, setQuery] = useState<string>("");
   const mapRef = useRef<L.Map | null>(null);
 
   const [data, setData] = useState<ResponseData>({
@@ -297,10 +296,11 @@ export default function Dashboard() {
         </div>
         <div className="flex flex-col lg:flex-row h-auto lg:h-[65vh] xl:h-[72vh] 2xl:h-[74vh]">
           <div
-            className={`transition-all duration-500 ${realEstateData.length === 0
-              ? "w-full h-[65vh] lg:h-full"
-              : "h-[48vh] lg:h-full w-full lg:max-w-[50vw] xl:max-w-[60vw]"
-              } z-100 rounded-xl overflow-hidden`}
+            className={`transition-all duration-500 ${
+              realEstateData.length === 0
+                ? "w-full h-[65vh] lg:h-full"
+                : "h-[48vh] lg:h-full w-full lg:max-w-[50vw] xl:max-w-[60vw]"
+            } z-100 rounded-xl overflow-hidden`}
           >
             {/* map */}
             <RealEstateMapComponent
@@ -313,7 +313,7 @@ export default function Dashboard() {
                 onPropertyClick: handlePropertyClick,
                 onBoundsChange: (bounds: MapBounds) => {
                   // console.log("Bounds changed:", bounds);
-                }
+                },
               }}
             />
           </div>
@@ -321,7 +321,15 @@ export default function Dashboard() {
           {/* Real Estate Results */}
           {realEstateData.length > 0 && (
             <ScrollArea className="w-full h-auto lg:h-full lg:max-w-[50vw] xl:max-w-[40vw]">
-              <p className={`px-4 ${syne.className} lg:leading-[0.7] text-sm xl:text-base lg:py-1 text-[#CAD1F3]`}>Showing results for data in<br className="block lg:hidden" /> <span className={`text-[15px] xl:text-[18px] ${syne.className} lg:leading-[0.7]`}>&quot;{query}&quot;</span></p>
+              <p
+                className={`px-4 ${syne.className} lg:leading-[0.7] text-sm xl:text-base lg:py-1 text-[#CAD1F3]`}
+              >
+                Showing results for data in
+                <br className="block lg:hidden" />{" "}
+                <span className={`text-[15px] xl:text-[18px] ${syne.className} lg:leading-[0.7]`}>
+                  &quot;{query}&quot;
+                </span>
+              </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 place-items-center">
                 {realEstateData.map((item, index) => (
                   <RealEstateCard
