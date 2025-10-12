@@ -23,7 +23,6 @@ if (typeof window !== "undefined") {
   });
 }
 
-
 interface RealEstateMapProps {
   properties?: Property[];
   eventHandlers?: MapEventHandlers;
@@ -47,7 +46,7 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
   height = "600px",
   width = "100%",
   className = "",
-  mapRef: externalMapRef
+  mapRef: externalMapRef,
 }) => {
   const [mapLayer, setMapLayer] = useState<"street" | "satellite">("street");
   const [filteredProperties, setFilteredProperties] = useState<Property[]>(properties);
@@ -69,11 +68,12 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
       }
 
       // Filter properties based on bounds
-      const filtered = properties.filter(prop =>
-        prop.latitude >= bounds.south &&
-        prop.latitude <= bounds.north &&
-        prop.longitude >= bounds.west &&
-        prop.longitude <= bounds.east
+      const filtered = properties.filter(
+        (prop) =>
+          prop.latitude >= bounds.south &&
+          prop.latitude <= bounds.north &&
+          prop.longitude >= bounds.west &&
+          prop.longitude <= bounds.east
       );
       setFilteredProperties(filtered);
     }, 500),
@@ -99,12 +99,12 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
   const tileLayers = {
     street: {
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a>"
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     },
     satellite: {
       url: "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
-      attribution: "&copy; Google"
-    }
+      attribution: "&copy; Google",
+    },
   };
 
   // Simple US states GeoJSON for hover effect (you should load this from a proper file)
@@ -143,7 +143,7 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
       style={{
         height: typeof height === "number" ? `${height}px` : height,
         width: typeof width === "number" ? `${width}px` : width,
-        position: "relative"
+        position: "relative",
       }}
     >
       <MapContainer
@@ -152,17 +152,11 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
         style={{ height: "100%", width: "100%" }}
         ref={mapRef}
       >
-        <TileLayer
-          attribution={tileLayers[mapLayer].attribution}
-          url={tileLayers[mapLayer].url}
-        />
+        <TileLayer attribution={tileLayers[mapLayer].attribution} url={tileLayers[mapLayer].url} />
 
         {/* Current Location Marker */}
         {showCurrentLocation && (
-          <CurrentLocationMarker
-            position={initialCenter}
-            label={currentLocationLabel}
-          />
+          <CurrentLocationMarker position={initialCenter} label={currentLocationLabel} />
         )}
 
         {/* State boundaries (only visible at zoom <= 6) */}
@@ -180,12 +174,8 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
         )} */}
 
         {/* Property markers */}
-        {filteredProperties.map(property => (
-          <PropertyMarker
-            key={property.id}
-            property={property}
-            onClick={handlePropertyClick}
-          />
+        {filteredProperties.map((property) => (
+          <PropertyMarker key={property.id} property={property} onClick={handlePropertyClick} />
         ))}
 
         <MapEventListener onBoundsChange={debouncedBoundsChange} />
@@ -193,18 +183,22 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
       </MapContainer>
 
       {/* Property stats overlay */}
-      <div style={{
-        position: "absolute",
-        bottom: "20px",
-        left: "20px",
-        backgroundColor: "white",
-        padding: "12px 16px",
-        borderRadius: "8px",
-        boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-        zIndex: 1000,
-        fontSize: "14px"
-      }}>
-        <div>Properties in view: <strong>{filteredProperties.length}</strong></div>
+      <div
+        style={{
+          position: "absolute",
+          bottom: "20px",
+          left: "20px",
+          backgroundColor: "white",
+          padding: "12px 16px",
+          borderRadius: "8px",
+          boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+          zIndex: 1000,
+          fontSize: "14px",
+        }}
+      >
+        <div>
+          Properties in view: <strong>{filteredProperties.length}</strong>
+        </div>
         {currentBounds && (
           <div style={{ fontSize: "12px", color: "#666", marginTop: "4px" }}>
             Zoom: {currentBounds.zoom}

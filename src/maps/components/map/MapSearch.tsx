@@ -23,7 +23,7 @@ const MapSearch: React.FC<MapSearchProps> = ({ onSearch }) => {
       try {
         const response = await fetch(
           "https://nominatim.openstreetmap.org/search?" +
-          `format=json&q=${encodeURIComponent(query)}&countrycodes=us&limit=5`
+            `format=json&q=${encodeURIComponent(query)}&countrycodes=us&limit=5`
         );
         const data = await response.json();
         setSuggestions(data);
@@ -47,23 +47,26 @@ const MapSearch: React.FC<MapSearchProps> = ({ onSearch }) => {
     const lat = parseFloat(suggestion.lat);
     const lng = parseFloat(suggestion.lon);
     const address = suggestion.display_name;
-    
+
     setSearchQuery(address);
     setSuggestions([]);
     onSearch(lat, lng, address);
   };
 
   return (
-    <div className="map-search" style={{
-      position: "absolute",
-      top: "10px",
-      left: "50px",
-      zIndex: 1000,
-      backgroundColor: "white",
-      borderRadius: "4px",
-      boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
-      width: "300px"
-    }}>
+    <div
+      className="map-search"
+      style={{
+        position: "absolute",
+        top: "10px",
+        left: "50px",
+        zIndex: 1000,
+        backgroundColor: "white",
+        borderRadius: "4px",
+        boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
+        width: "300px",
+      }}
+    >
       <input
         type="text"
         placeholder="Search location..."
@@ -74,26 +77,26 @@ const MapSearch: React.FC<MapSearchProps> = ({ onSearch }) => {
           padding: "10px",
           border: "none",
           borderRadius: "4px",
-          fontSize: "14px"
+          fontSize: "14px",
         }}
       />
       {isSearching && (
-        <div style={{ padding: "8px", fontSize: "12px", color: "#666" }}>
-          Searching...
-        </div>
+        <div style={{ padding: "8px", fontSize: "12px", color: "#666" }}>Searching...</div>
       )}
       {suggestions.length > 0 && (
-        <div style={{
-          position: "absolute",
-          top: "100%",
-          left: 0,
-          right: 0,
-          backgroundColor: "white",
-          borderRadius: "0 0 4px 4px",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
-          maxHeight: "200px",
-          overflow: "auto"
-        }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "100%",
+            left: 0,
+            right: 0,
+            backgroundColor: "white",
+            borderRadius: "0 0 4px 4px",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
+            maxHeight: "200px",
+            overflow: "auto",
+          }}
+        >
           {suggestions.map((suggestion, index) => (
             <div
               key={index}
@@ -103,10 +106,10 @@ const MapSearch: React.FC<MapSearchProps> = ({ onSearch }) => {
                 fontSize: "13px",
                 cursor: "pointer",
                 borderBottom: "1px solid #eee",
-                transition: "background-color 0.2s"
+                transition: "background-color 0.2s",
               }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#f5f5f5"}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "white"}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#f5f5f5")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "white")}
             >
               {suggestion.display_name}
             </div>

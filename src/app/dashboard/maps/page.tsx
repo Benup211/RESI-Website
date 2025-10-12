@@ -1,8 +1,8 @@
 "use client";
 import React, { useRef } from "react";
-import { RealEstateMapComponent, MapSearchControl } from "../../../maps/components/map";
-import type { MapSearchRef } from "../../../maps/components/map";
-import type { Property, MapBounds } from "../../../maps/components/map";
+import { RealEstateMapComponent, MapSearchControl } from "@/maps/components/map";
+import type { MapSearchRef } from "@/maps/components/map";
+import type { Property, MapBounds } from "@/maps/components/map";
 
 export default function PropertiesPage() {
   const mapRef = useRef<L.Map | null>(null);
@@ -28,7 +28,7 @@ export default function PropertiesPage() {
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold">Find Properties</h1>
             {/* Standalone search component */}
-            <MapSearchControl 
+            <MapSearchControl
               ref={searchRef}
               onSearch={handleSearch}
               placeholder="Search by address, city, or ZIP..."
@@ -49,7 +49,7 @@ export default function PropertiesPage() {
             onPropertyClick: handlePropertyClick,
             onBoundsChange: (bounds: MapBounds) => {
               // console.log("Bounds changed:", bounds);
-            }
+            },
           }}
         />
       </div>

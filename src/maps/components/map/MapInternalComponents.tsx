@@ -11,7 +11,7 @@ export const CurrentLocationMarker: React.FC<{
   label?: string;
 }> = ({ position, label = "Current Location" }) => {
   const map = useMap();
-  
+
   useEffect(() => {
     const icon = L.divIcon({
       html: `
@@ -43,18 +43,16 @@ export const CurrentLocationMarker: React.FC<{
       `,
       iconSize: [20, 20],
       iconAnchor: [10, 10],
-      className: "current-location-marker"
+      className: "current-location-marker",
     });
-    
-    const marker = L.marker(position, { icon, zIndexOffset: 1000 })
-      .bindPopup(label)
-      .addTo(map);
-    
+
+    const marker = L.marker(position, { icon, zIndexOffset: 1000 }).bindPopup(label).addTo(map);
+
     return () => {
       marker.remove();
     };
   }, [map, position, label]);
-  
+
   return null;
 };
 
@@ -71,7 +69,7 @@ export const MapEventListener: React.FC<{
         south: bounds.getSouth(),
         east: bounds.getEast(),
         west: bounds.getWest(),
-        zoom
+        zoom,
       });
     },
     zoomend: () => {
@@ -82,11 +80,11 @@ export const MapEventListener: React.FC<{
         south: bounds.getSouth(),
         east: bounds.getEast(),
         west: bounds.getWest(),
-        zoom
+        zoom,
       });
-    }
+    },
   });
-  
+
   return null;
 };
 
@@ -95,24 +93,26 @@ export const LayerControl: React.FC<{
   onLayerChange: (layer: "street" | "satellite") => void;
 }> = ({ onLayerChange }) => {
   const [activeLayer, setActiveLayer] = useState<"street" | "satellite">("street");
-  
+
   const handleLayerChange = (layer: "street" | "satellite") => {
     setActiveLayer(layer);
     onLayerChange(layer);
   };
-  
+
   return (
-    <div style={{
-      position: "absolute",
-      top: "10px",
-      right: "10px",
-      zIndex: 1000,
-      backgroundColor: "white",
-      borderRadius: "8px",
-      boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-      display: "flex",
-      padding: "4px"
-    }}>
+    <div
+      style={{
+        position: "absolute",
+        top: "10px",
+        right: "10px",
+        zIndex: 1000,
+        backgroundColor: "white",
+        borderRadius: "8px",
+        boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+        display: "flex",
+        padding: "4px",
+      }}
+    >
       <button
         onClick={() => handleLayerChange("street")}
         style={{
@@ -125,7 +125,7 @@ export const LayerControl: React.FC<{
           backgroundColor: activeLayer === "street" ? "#3b82f6" : "transparent",
           color: activeLayer === "street" ? "white" : "#666",
           transition: "all 0.2s",
-          marginRight: "4px"
+          marginRight: "4px",
         }}
       >
         Maps
@@ -141,7 +141,7 @@ export const LayerControl: React.FC<{
           fontWeight: "500",
           backgroundColor: activeLayer === "satellite" ? "#3b82f6" : "transparent",
           color: activeLayer === "satellite" ? "white" : "#666",
-          transition: "all 0.2s"
+          transition: "all 0.2s",
         }}
       >
         Satellite

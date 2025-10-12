@@ -20,21 +20,25 @@ export const getPropertyIcon = (type: Property["type"]): string => {
     house: "🏠",
     apartment: "🏢",
     land: "🌳",
-    commercial: "🏪"
+    commercial: "🏪",
   };
   return icons[type] || "📍";
 };
 
-export const calculateBoundsFromCoordinates = (lat: number, lng: number, zoom: number): MapBounds => {
+export const calculateBoundsFromCoordinates = (
+  lat: number,
+  lng: number,
+  zoom: number
+): MapBounds => {
   // Simplified calculation - in production, use more precise formulas
   const latRange = 180 / Math.pow(2, zoom);
   const lngRange = 360 / Math.pow(2, zoom);
-  
+
   return {
     north: lat + latRange / 2,
     south: lat - latRange / 2,
     east: lng + lngRange / 2,
     west: lng - lngRange / 2,
-    zoom
+    zoom,
   };
 };

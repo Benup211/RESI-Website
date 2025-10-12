@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://resilabs.ai"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL as string),
   title: "RESI - Real Estate Super Intelligence",
   description:
     "Building the world's largest open real estate database through decentralized intelligence",

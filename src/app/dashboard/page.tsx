@@ -7,7 +7,12 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Search, Triangle, X } from "lucide-react";
 import { Work_Sans, Syne } from "next/font/google";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import React, { } from "react";
+import { RealEstateMapComponent, MapSearchControl } from "@/maps/components/map";
+import type { MapSearchRef } from "@/maps/components/map";
+import type { Property, MapBounds } from "@/maps/components/map";
+
 
 const worksans = Work_Sans({
   variable: "--font-work-sans",
@@ -149,6 +154,8 @@ const MOCK_DATA: RealEstateData[] = [
 export default function Dashboard() {
   const [showSearch, setShowSearch] = useState<boolean>(false);
   const [realEstateData, setRealEstateData] = useState<RealEstateData[]>([]);
+  const [query,setQuery]=useState<String>("");
+  const mapRef = useRef<L.Map | null>(null);
 
   const [data, setData] = useState<ResponseData>({
     totalNationalData: "0",
@@ -177,7 +184,7 @@ export default function Dashboard() {
 
   const handleSearch = (query: string) => {
     console.log("Searching for:", query);
-
+    setQuery(query);
     // Filter from mock data (simulate API)
     const filtered = MOCK_DATA.filter((item) =>
       item.location.toLowerCase().includes(query.toLowerCase())
@@ -185,6 +192,10 @@ export default function Dashboard() {
 
     // If nothing matches, you could set a "no results" message
     setRealEstateData(filtered.length ? filtered : MOCK_DATA);
+  };
+
+  const handlePropertyClick = (property: Property) => {
+    console.log("Property clicked:", property);
   };
 
   return (
@@ -286,25 +297,31 @@ export default function Dashboard() {
         </div>
         <div className="flex flex-col lg:flex-row h-auto lg:h-[65vh] xl:h-[72vh] 2xl:h-[74vh]">
           <div
-            className={`transition-all duration-500 ${
-              realEstateData.length === 0
-                ? "w-full h-[65vh] lg:h-full"
-                : "h-[48vh] lg:h-full w-full lg:max-w-[50vw] xl:max-w-[60vw]"
-            } z-100`}
+            className={`transition-all duration-500 ${realEstateData.length === 0
+              ? "w-full h-[65vh] lg:h-full"
+              : "h-[48vh] lg:h-full w-full lg:max-w-[50vw] xl:max-w-[60vw]"
+              } z-100 rounded-xl overflow-hidden`}
           >
             {/* map */}
+            <RealEstateMapComponent
+              mapRef={mapRef}
+              height="100%"
+              width="100%"
+              showCurrentLocation={true}
+              currentLocationLabel="Your Location"
+              eventHandlers={{
+                onPropertyClick: handlePropertyClick,
+                onBoundsChange: (bounds: MapBounds) => {
+                  // console.log("Bounds changed:", bounds);
+                }
+              }}
+            />
           </div>
 
           {/* Real Estate Results */}
           {realEstateData.length > 0 && (
             <ScrollArea className="w-full h-auto lg:h-full lg:max-w-[50vw] xl:max-w-[40vw]">
-              <p
-                className={`px-4 ${syne.className} lg:leading-[0.7] text-sm xl:text-base lg:py-1 text-[#CAD1F3]`}
-              >
-                Showing results for{" "}
-                <span className="text-[15px] xl:text-[18px]">&quot;{realEstateData.length}&quot;</span>{" "}
-                properties
-              </p>
+              <p className={`px-4 ${syne.className} lg:leading-[0.7] text-sm xl:text-base lg:py-1 text-[#CAD1F3]`}>Showing results for data in<br className="block lg:hidden" /> <span className={`text-[15px] xl:text-[18px] ${syne.className} lg:leading-[0.7]`}>&quot;{query}&quot;</span></p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 place-items-center">
                 {realEstateData.map((item, index) => (
                   <RealEstateCard
