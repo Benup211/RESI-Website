@@ -9,6 +9,7 @@ import PropertyMarker from "./PropertyMarker";
 import { CurrentLocationMarker, MapEventListener, LayerControl } from "./MapInternalComponents";
 import { Property, MapBounds, StateData, MapEventHandlers } from "../../types/map.types";
 import { mockProperties } from "../../data/mockProperties";
+import FullscreenControl from "./FullScreenControl";
 
 // Initialize Leaflet icons only on client side
 if (typeof window !== "undefined") {
@@ -60,8 +61,18 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
   const boundsCache = useRef<Map<string, Property[]>>(new Map());
 
   // Debounced bounds change handler
+  // debounced time current is 2 sec
+  const debouncedTime = 2000;
   const debouncedBoundsChange = useCallback(
     debounce((bounds: MapBounds) => {
+      // example of map bounds output
+      //       {
+      //     "north": 32.24532861404601,
+      //     "south": 29.89304338543419,
+      //     "east": -97.07519531250001,
+      //     "west": -101.62902832031251,
+      //     "zoom": 8
+      // }
       setCurrentBounds(bounds);
 
       if (eventHandlers.onBoundsChange) {
@@ -69,6 +80,8 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
       }
 
       // Filter properties based on bounds
+      // currently when the location changes or there is any change in the location
+      // we are updating our static  data finding
       const filtered = properties.filter(prop =>
         prop.latitude >= bounds.south &&
         prop.latitude <= bounds.north &&
@@ -76,7 +89,7 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
         prop.longitude <= bounds.east
       );
       setFilteredProperties(filtered);
-    }, 500),
+    }, debouncedTime),
     [properties, eventHandlers]
   );
 
@@ -190,6 +203,7 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
 
         <MapEventListener onBoundsChange={debouncedBoundsChange} />
         <LayerControl onLayerChange={setMapLayer} />
+        <FullscreenControl />
       </MapContainer>
 
       {/* Property stats overlay */}

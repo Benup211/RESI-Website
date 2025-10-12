@@ -175,8 +175,9 @@
 .leaflet-default-icon-path {
   background-image: url('https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png');
 }
-.leaflet-marker-icon:not(.leaflet-div-icon),
-.leaflet-marker-shadow {
+
+.leaflet-marker-icon:not(.leaflet-div-icon):not(.custom-property-marker),
+.leaflet-marker-shadow:not(.custom-property-marker) {
   background-image: url('https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png');
 }
 

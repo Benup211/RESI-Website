@@ -48,7 +48,8 @@ export default function PropertiesPage() {
           eventHandlers={{
             onPropertyClick: handlePropertyClick,
             onBoundsChange: (bounds: MapBounds) => {
-              // console.log("Bounds changed:", bounds);
+              // necessary API call can be when there is location changes in the map
+              // console.log("making API call with the new bounds data: ",bounds)
             }
           }}
         />
