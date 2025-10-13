@@ -137,10 +137,11 @@ export default function LandingPage() {
             className="relative order-1 lg:order-3 lg:col-span-2 p-8 text-center flex items-start justify-center
                 h-[65vh] lg:h-auto"
           >
-            <FlashlightText delay={1000} spotlightSize={200} intensity={5}>
-              <AnimateOnLoad variant={textRevealBottom} delay={1}>
+            <AnimateOnLoad variant={textRevealBottom} delay={1}>
+              <FlashlightText delay={1000} spotlightSize={200} intensity={5}>
                 <h1
-                  className={`${anton.className} text-[4rem] lg:text-[7.9rem] xl:text-[10rem] xx:text-[11rem] 2xl:text-[12rem] 3xl:text-[14.5rem] font-bold origin-center lg:scale-y-[1.5] mt-25 lg:mt-0 cursor-pointer`}
+                  className={`${anton.className} text-5xl xz:text-6xl sm:text-6xl md:text-7xl lg:text-[7.7rem] xl:text-[9.7rem] xx:text-[11rem] 2xl:text-[11.7rem] 3xl:text-[12.5rem]
+                  4xl:text-[14.5rem] font-bold origin-center lg:scale-y-[1.5] mt-25 lg:mt-0 cursor-pointer leading-tight lg:p-2`}
                 >
                   <span
                     style={{
@@ -157,18 +158,17 @@ export default function LandingPage() {
 
                       WebkitTextFillColor: "transparent",
                       color: "transparent",
-
                       display: "inline-block",
                     }}
                   >
                     REAL ESTATE <br className="block lg:hidden" />
-                    <span className="text-[4.5rem] lg:text-[7.9rem] xl:text-[10rem] xx:text-[11rem] 2xl:text-[12rem] 3xl:text-[14.5rem] leading-[1]">
+                    <span className="block lg:inline">
                       ORACLE
                     </span>
                   </span>
                 </h1>
-              </AnimateOnLoad>
-            </FlashlightText>
+              </FlashlightText>
+            </AnimateOnLoad>
             <div className="absolute left-1/2 -translate-x-1/2 lg:ml-8 top-[25vh] md:top-[35vh] lg:-top-[40vh] xl:-top-[40vh] xx:-top-[40vh] 2xl:-top-[40vh] 3xl:-top-[40vh] z-20 rounded-full">
               <AnimateOnLoad variant={imageRevealTop} delay={0.6}>
                 {!isHidden && (
@@ -181,31 +181,31 @@ export default function LandingPage() {
                     animate={
                       clicked
                         ? {
-                            x: xFrames,
-                            y: yFrames,
-                            rotate: rotateFrames,
-                            opacity: [1, 0.9, 0.6, 0.3, 0],
-                            scale: [1, 0.98, 0.9, 0.8],
-                          }
+                          x: xFrames,
+                          y: yFrames,
+                          rotate: rotateFrames,
+                          opacity: [1, 0.9, 0.6, 0.3, 0],
+                          scale: [1, 0.98, 0.9, 0.8],
+                        }
                         : {
-                            scale: isHovered ? 1.2 : 1,
-                            rotate: 0,
-                          }
+                          scale: isHovered ? 1.2 : 1,
+                          rotate: 0,
+                        }
                     }
                     transition={
                       clicked
                         ? {
-                            duration: exploreNowAnimationDuration,
-                            ease: "easeInOut",
-                            onComplete: () => setIsHidden(true),
-                          }
+                          duration: exploreNowAnimationDuration,
+                          ease: "easeInOut",
+                          onComplete: () => setIsHidden(true),
+                        }
                         : {
-                            duration: 1.2,
-                            ease: [0.25, 0.46, 0.45, 0.94],
-                            type: "spring",
-                            stiffness: 80,
-                            damping: 12,
-                          }
+                          duration: 1.2,
+                          ease: [0.25, 0.46, 0.45, 0.94],
+                          type: "spring",
+                          stiffness: 80,
+                          damping: 12,
+                        }
                     }
                   >
                     <div className="relative w-full h-full max-w-[60vw] max-h-[70vh] rounded-full mx-auto">
@@ -274,37 +274,37 @@ export default function LandingPage() {
 
           <motion.div
             className={
-              "absolute top-[50%] lg:top-[30%] xl:top-[35%] left-1/2 -translate-x-1/2 z-20 text-[#CAD1F3] flex-col items-center justify-center text-center w-[80%] lg:w-auto "
+              "absolute top-[50%] lg:top-[30%] xl:top-[25vh] left-1/2 -translate-x-1/2 z-20 text-[#CAD1F3] flex-col items-center justify-center text-center w-[80%] lg:w-auto "
             }
             initial={false}
             animate={
               clicked
                 ? {
-                    // Now it travels inward (top-right → center)
-                    x: xFramesDiv,
-                    y: yFramesDiv,
-                    rotate: rotateFramesDiv,
-                    opacity: [0, 0.6, 1],
-                    scale: [0.8, 0.95, 1],
-                  }
+                  // Now it travels inward (top-right → center)
+                  x: xFramesDiv,
+                  y: yFramesDiv,
+                  rotate: rotateFramesDiv,
+                  opacity: [0, 0.6, 1],
+                  scale: [0.8, 0.95, 1],
+                }
                 : {
-                    opacity: 0,
-                    scale: 0.8,
-                  }
+                  opacity: 0,
+                  scale: 0.8,
+                }
             }
             transition={
               clicked
                 ? {
-                    duration: 0.8,
-                    ease: "easeInOut",
-                  }
+                  duration: 0.8,
+                  ease: "easeInOut",
+                }
                 : {
-                    duration: exploreNowAnimationDuration,
-                  }
+                  duration: exploreNowAnimationDuration,
+                }
             }
           >
             <h2
-              className={`${syne.className} font-semibold text-[15px] lg:text-2xl xl:text-3xl 2xl:text-4xl mb-2`}
+              className={`${syne.className} font-semibold text-[15px] lg:text-2xl xl:text-[2vw] 3xl:text-[1.7vw] mb-2`}
             >
               Questions about Real Estate?{" "}
               <span className="bg-gradient-to-r from-[#C4CEFF] via-[#9C70D5] to-[#3753E4] bg-clip-text text-transparent">
