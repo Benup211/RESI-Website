@@ -162,9 +162,7 @@ export default function LandingPage() {
                     }}
                   >
                     REAL ESTATE <br className="block lg:hidden" />
-                    <span className="block lg:inline">
-                      ORACLE
-                    </span>
+                    <span className="block lg:inline">ORACLE</span>
                   </span>
                 </h1>
               </FlashlightText>
@@ -181,31 +179,31 @@ export default function LandingPage() {
                     animate={
                       clicked
                         ? {
-                          x: xFrames,
-                          y: yFrames,
-                          rotate: rotateFrames,
-                          opacity: [1, 0.9, 0.6, 0.3, 0],
-                          scale: [1, 0.98, 0.9, 0.8],
-                        }
+                            x: xFrames,
+                            y: yFrames,
+                            rotate: rotateFrames,
+                            opacity: [1, 0.9, 0.6, 0.3, 0],
+                            scale: [1, 0.98, 0.9, 0.8],
+                          }
                         : {
-                          scale: isHovered ? 1.2 : 1,
-                          rotate: 0,
-                        }
+                            scale: isHovered ? 1.2 : 1,
+                            rotate: 0,
+                          }
                     }
                     transition={
                       clicked
                         ? {
-                          duration: exploreNowAnimationDuration,
-                          ease: "easeInOut",
-                          onComplete: () => setIsHidden(true),
-                        }
+                            duration: exploreNowAnimationDuration,
+                            ease: "easeInOut",
+                            onComplete: () => setIsHidden(true),
+                          }
                         : {
-                          duration: 1.2,
-                          ease: [0.25, 0.46, 0.45, 0.94],
-                          type: "spring",
-                          stiffness: 80,
-                          damping: 12,
-                        }
+                            duration: 1.2,
+                            ease: [0.25, 0.46, 0.45, 0.94],
+                            type: "spring",
+                            stiffness: 80,
+                            damping: 12,
+                          }
                     }
                   >
                     <div className="relative w-full h-full max-w-[60vw] max-h-[70vh] rounded-full mx-auto">
@@ -280,27 +278,27 @@ export default function LandingPage() {
             animate={
               clicked
                 ? {
-                  // Now it travels inward (top-right → center)
-                  x: xFramesDiv,
-                  y: yFramesDiv,
-                  rotate: rotateFramesDiv,
-                  opacity: [0, 0.6, 1],
-                  scale: [0.8, 0.95, 1],
-                }
+                    // Now it travels inward (top-right → center)
+                    x: xFramesDiv,
+                    y: yFramesDiv,
+                    rotate: rotateFramesDiv,
+                    opacity: [0, 0.6, 1],
+                    scale: [0.8, 0.95, 1],
+                  }
                 : {
-                  opacity: 0,
-                  scale: 0.8,
-                }
+                    opacity: 0,
+                    scale: 0.8,
+                  }
             }
             transition={
               clicked
                 ? {
-                  duration: 0.8,
-                  ease: "easeInOut",
-                }
+                    duration: 0.8,
+                    ease: "easeInOut",
+                  }
                 : {
-                  duration: exploreNowAnimationDuration,
-                }
+                    duration: exploreNowAnimationDuration,
+                  }
             }
           >
             <h2

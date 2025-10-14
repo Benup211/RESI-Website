@@ -12,6 +12,7 @@ import { useEffect, useState, useRef } from "react";
 import React from "react";
 import { RealEstateMapComponent } from "@/maps/components/map";
 import type { Property, MapBounds } from "@/maps/components/map";
+import AskResi from "@/components/common/AskResi";
 
 const worksans = Work_Sans({
   variable: "--font-work-sans",
@@ -198,7 +199,7 @@ export default function Dashboard() {
   };
 
   return (
-    <main className="w-full h-auto lg:h-screen overflow-auto lg:overflow-hidden relative">
+    <main className="w-full h-full relative">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -294,13 +295,10 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row h-auto lg:h-[65vh] xl:h-[68vh] 2xl:h-[72vh] py-2">
+        <div className="flex flex-col lg:h-[65vh] xl:h-[72vh] 2xl:h-[74vh] py-2 lg:px-8">
           <div
-            className={`transition-all duration-500 ${
-              realEstateData.length === 0
-                ? "w-full h-[65vh] lg:h-full"
-                : "h-[48vh] lg:h-full w-full lg:max-w-[50vw] xl:max-w-[60vw]"
-            } z-100 rounded-xl overflow-hidden`}
+            className={`transition-all duration-500 w-full
+              ${realEstateData.length > 0 ? "h-[50vh] lg:h-[full]" : "h-[59vh] lg:h-full"} z-100 rounded-xl overflow-hidden`}
           >
             {/* map */}
             <RealEstateMapComponent
@@ -320,7 +318,7 @@ export default function Dashboard() {
 
           {/* Real Estate Results */}
           {realEstateData.length > 0 && (
-            <ScrollArea className="w-full h-auto lg:h-full lg:max-w-[50vw] xl:max-w-[40vw]">
+            <ScrollArea className="w-full h-auto lg:h-[20vh] lg:max-h-[20vh] xl:h-[30vh] xl:max-h-[30vh] mt-2">
               <p
                 className={`px-4 ${syne.className} lg:leading-[0.7] text-sm xl:text-base lg:py-1 text-[#CAD1F3]`}
               >
@@ -330,7 +328,7 @@ export default function Dashboard() {
                   &quot;{query}&quot;
                 </span>
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 place-items-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-4 place-items-center">
                 {realEstateData.map((item, index) => (
                   <RealEstateCard
                     key={index}
@@ -348,7 +346,7 @@ export default function Dashboard() {
             </ScrollArea>
           )}
         </div>
-        <div className="w-full h-[15vh] 2xl:h-[10vh] bg-black p-2 lg:py-3 lg:px-8 flex justify-center items-center">
+        <div className="w-full h-[15vh] xl:h-[10vh] p-2 lg:py-3 lg:px-8 flex justify-center items-center">
           <div className="w-full h-full rounded-xl overflow-hidden border-[1px] border-[#345ba3]/60 relative flex justify-center items-center p-1">
             <div
               className="absolute top-0 left-0 w-[20%] h-[150%] rounded-full pointer-events-none blur-[60px] opacity-80 z-0"
@@ -360,7 +358,7 @@ export default function Dashboard() {
               style={{ background: "radial-gradient(circle, #4827AC 100%, transparent 100%)" }}
             ></div>
 
-            <div className="w-full h-full grid grid-cols-3">
+            <div className="w-full h-full grid grid-cols-3 place-content-center">
               <div className="p-2 flex flex-col lg:flex-row lg:items-center justify-evenly z-1 border-r border-[#595959]/60">
                 <p
                   className={`${syne.className} text-[#CAD1F3] text-xs lg:text-base order-2 lg:order-1`}
@@ -369,7 +367,7 @@ export default function Dashboard() {
                   <br /> nationwide data
                 </p>
                 <p
-                  className={`${worksans.className} font-semibold text-2xl lg:text-4xl text-white order-1 lg:order-2`}
+                  className={`${worksans.className} font-semibold text-2xl lg:text-3xl xl:text-4xl text-white order-1 lg:order-2`}
                 >
                   {totalNationalData ?? "56"}
                   <span className="ml-[1px] text-2xl font-normal">%</span>
@@ -383,7 +381,7 @@ export default function Dashboard() {
                   <br /> of Growth
                 </p>
                 <p
-                  className={`${worksans.className} font-semibold text-2xl lg:text-4xl text-white order-1 lg:order-2 flex`}
+                  className={`${worksans.className} font-semibold text-2xl lg:text-3xl xl:text-4xl text-white order-1 lg:order-2 flex`}
                 >
                   {growthRate ?? "78"}
                   <span className="ml-[1px] text-2xl font-normal flex justify-center items-center gap-1">
@@ -404,7 +402,7 @@ export default function Dashboard() {
                   Property Coverage
                 </p>
                 <p
-                  className={`${worksans.className} font-semibold text-2xl lg:text-4xl text-white order-1 lg:order-2`}
+                  className={`${worksans.className} font-semibold text-2xl lg:text-3xl xl:text-4xl text-white order-1 lg:order-2`}
                 >
                   {propertyCoverage ?? "76.7"}
                 </p>

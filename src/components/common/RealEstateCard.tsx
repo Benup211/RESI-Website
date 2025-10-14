@@ -52,7 +52,7 @@ export default function RealEstateCard({
   }, [location]);
 
   return (
-    <div className="w-full max-w-[380px] h-[120px] sm:h-[130px] lg:h-[120px] rounded-xl backdrop-blur-[2px] bg-gradient-bl from-55% from-[#CAD1F3]/15 via-77% via-[#657FFF] to-100% to-[#5B76F6] border-2 border-white/20 border-l-blue-800/50 border-b-blue-800/70 shadow-[1px] shadow-slate-400 relative overflow-hidden">
+    <div className="w-full h-[120px] sm:h-[130px] lg:h-[120px] rounded-xl backdrop-blur-[2px] bg-gradient-bl from-55% from-[#CAD1F3]/15 via-77% via-[#657FFF] to-100% to-[#5B76F6] border-2 border-white/20 border-l-blue-800/50 border-b-blue-800/70 shadow-[1px] shadow-slate-400 relative overflow-hidden">
       <div
         className="absolute bottom-0 right-0 w-[80%] h-[80%] rounded-full pointer-events-none blur-[50px] opacity-60 z-[0]"
         style={{ background: "radial-gradient(circle, #18009E 10%, #0A0D3E 100%)" }}

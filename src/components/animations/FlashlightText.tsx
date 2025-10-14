@@ -1,5 +1,5 @@
 import { useState, useRef, ReactNode, useEffect } from "react";
- 
+
 interface FlashlightTextProps {
   children: ReactNode;
   className?: string;
@@ -7,7 +7,7 @@ interface FlashlightTextProps {
   delay?: number;
   intensity?: number;
 }
- 
+
 export const FlashlightText = ({
   children,
   className = "",
@@ -20,62 +20,62 @@ export const FlashlightText = ({
   const [hasMouseMoved, setHasMouseMoved] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
- 
+
   const clampedIntensity = Math.max(1, Math.min(10, intensity));
   const brightness = 1 + (clampedIntensity / 10) * 1.5;
   const contrast = 1 + clampedIntensity / 20;
- 
+
   // Detect mobile/small screens
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024);
     };
- 
+
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
- 
+
   // Enable flashlight after animation delay (only on desktop)
   useEffect(() => {
     if (isMobile) {
       setIsEnabled(false);
       return;
     }
- 
+
     const timer = setTimeout(() => {
       setIsEnabled(true);
     }, delay + 1000);
- 
+
     return () => clearTimeout(timer);
   }, [delay, isMobile]);
- 
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current || !isEnabled || isMobile) return;
- 
+
     const rect = containerRef.current.getBoundingClientRect();
     setMousePosition({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
     });
- 
+
     if (!hasMouseMoved) {
       setHasMouseMoved(true);
     }
   };
- 
+
   return (
-    <div 
-      ref={containerRef} 
-      className={`relative ${className}`} 
+    <div
+      ref={containerRef}
+      className={`relative ${className}`}
       onMouseMove={handleMouseMove}
-      style={{ 
+      style={{
         isolation: "isolate",
       }}
     >
       {/* Original text layer - always visible */}
       <div className="relative z-10">{children}</div>
- 
+
       {/* Illuminated text layer - only on desktop, only shows on text itself */}
       {isEnabled && !isMobile && hasMouseMoved && (
         <>
@@ -90,14 +90,16 @@ export const FlashlightText = ({
               WebkitMaskComposite: "source-in",
             }}
           >
-            <div style={{ 
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-            }}>
+            <div
+              style={{
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+              }}
+            >
               {children}
             </div>
           </div>
- 
+
           {/* Subtle inner glow - no blur to prevent overflow */}
           <div
             className="absolute inset-0 pointer-events-none z-[19]"
@@ -108,14 +110,16 @@ export const FlashlightText = ({
               filter: `brightness(${brightness * 1.3})`,
             }}
           >
-            <div style={{ 
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-            }}>
+            <div
+              style={{
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+              }}
+            >
               {children}
             </div>
           </div>
- 
+
           {/* Additional white highlight for extra intensity - very tight */}
           {clampedIntensity > 6 && (
             <div
@@ -126,14 +130,19 @@ export const FlashlightText = ({
                 opacity: ((clampedIntensity - 6) / 4) * 0.25,
               }}
             >
-              <div style={{ 
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-              }}>
-                <div className="absolute inset-0" style={{
-                  background: "white",
-                  mixBlendMode: "overlay",
-                }}>
+              <div
+                style={{
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                }}
+              >
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: "white",
+                    mixBlendMode: "overlay",
+                  }}
+                >
                   {children}
                 </div>
               </div>

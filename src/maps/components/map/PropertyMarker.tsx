@@ -4,7 +4,7 @@ import React from "react";
 import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { Property } from "../../types/map.types";
-import { getPriceColor, formatPrice, getPropertyIcon } from "../../utils/mapUtils";
+import { getPriceColor, formatPrice } from "../../utils/mapUtils";
 
 interface PropertyMarkerProps {
   property: Property;
@@ -14,30 +14,41 @@ interface PropertyMarkerProps {
 const PropertyMarker: React.FC<PropertyMarkerProps> = ({ property, onClick }) => {
   const createCustomIcon = () => {
     const color = getPriceColor(property.price);
-    const icon = getPropertyIcon(property.type);
+    const formattedPrice = formatPrice(property.price);
 
     return L.divIcon({
       html: `
         <div style="
-          background-color: ${color};
-          color: white;
-          border-radius: 50% 50% 50% 0;
-          padding: 8px;
-          transform: rotate(-45deg);
-          border: 2px solid white;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+          position: relative;
           display: flex;
+          flex-direction: column;
           align-items: center;
-          justify-content: center;
-          width: 35px;
-          height: 35px;
         ">
-          <span style="transform: rotate(45deg); font-size: 18px;">${icon}</span>
+          <div style="
+            background: ${color};
+            color: white;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+          ">
+            ${formattedPrice}
+          </div>
+          <div style="
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 10px solid ${color};
+            margin-top: 2px;
+          "></div>
         </div>
       `,
-      iconSize: [35, 35],
-      iconAnchor: [17.5, 35],
-      popupAnchor: [0, -35],
+      iconSize: [100, 40],
+      iconAnchor: [50, 40],
+      popupAnchor: [0, -40],
       className: "custom-property-marker",
     });
   };

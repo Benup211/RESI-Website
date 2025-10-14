@@ -14,34 +14,39 @@ const MapSearch: React.FC<MapSearchProps> = ({ onSearch }) => {
   const [isSearching, setIsSearching] = useState(false);
 
   // Using Nominatim (OpenStreetMap) for free geocoding
-  const debouncedSearch = useMemo(() =>
-    debounce(async (query: string) => {
-      if (query.length < 3) {
-        setSuggestions([]);
-        return;
-      }
+  const debouncedSearch = useMemo(
+    () =>
+      debounce(async (query: string) => {
+        if (query.length < 3) {
+          setSuggestions([]);
+          return;
+        }
 
-      setIsSearching(true);
-      try {
-        const response = await fetch(
-          "https://nominatim.openstreetmap.org/search?" +
-          `format=json&q=${encodeURIComponent(query)}&countrycodes=us&limit=5`
-        );
-        const data = await response.json();
-        setSuggestions(data);
-      } catch (error) {
-        console.error("Geocoding error:", error);
-        setSuggestions([]);
-      } finally {
-        setIsSearching(false);
-      }
-    }, 500),
-    [setSuggestions, setIsSearching]); // add actual state setters if defined outside
+        setIsSearching(true);
+        try {
+          const response = await fetch(
+            "https://nominatim.openstreetmap.org/search?" +
+              `format=json&q=${encodeURIComponent(query)}&countrycodes=us&limit=5`
+          );
+          const data = await response.json();
+          setSuggestions(data);
+        } catch (error) {
+          console.error("Geocoding error:", error);
+          setSuggestions([]);
+        } finally {
+          setIsSearching(false);
+        }
+      }, 500),
+    [setSuggestions, setIsSearching]
+  ); // add actual state setters if defined outside
 
   // Use it like this:
-  const searchLocation = useCallback((query: string) => {
-    debouncedSearch(query);
-  }, [debouncedSearch]);
+  const searchLocation = useCallback(
+    (query: string) => {
+      debouncedSearch(query);
+    },
+    [debouncedSearch]
+  );
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;

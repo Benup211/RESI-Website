@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React, { useState, useRef, useCallback, useEffect, useMemo } from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, ZoomControl } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import debounce from "lodash.debounce";
@@ -111,12 +112,12 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
   // Tile layer URLs (Fixed satellite URL)
   const tileLayers = {
     street: {
-      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a>",
+      url: "https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
+      attribution: "&copy; Google Map",
     },
     satellite: {
       url: "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
-      attribution: "&copy; Google",
+      attribution: "&copy; Google Map",
     },
   };
 
@@ -164,6 +165,8 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
         zoom={initialZoom}
         style={{ height: "100%", width: "100%" }}
         ref={mapRef}
+        zoomControl={false}
+        attributionControl={false}
       >
         <TileLayer attribution={tileLayers[mapLayer].attribution} url={tileLayers[mapLayer].url} />
 
@@ -194,31 +197,8 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
         <MapEventListener onBoundsChange={debouncedBoundsChange} />
         <LayerControl onLayerChange={setMapLayer} />
         <FullscreenControl />
+        <ZoomControl position="bottomright" />
       </MapContainer>
-
-      {/* Property stats overlay */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "20px",
-          left: "20px",
-          backgroundColor: "white",
-          padding: "12px 16px",
-          borderRadius: "8px",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-          zIndex: 1000,
-          fontSize: "14px",
-        }}
-      >
-        <div>
-          Properties in view: <strong>{filteredProperties.length}</strong>
-        </div>
-        {currentBounds && (
-          <div style={{ fontSize: "12px", color: "#666", marginTop: "4px" }}>
-            Zoom: {currentBounds.zoom}
-          </div>
-        )}
-      </div>
     </div>
   );
 };

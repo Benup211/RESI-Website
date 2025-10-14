@@ -4,7 +4,13 @@ import React, { useEffect, useState } from "react";
 import { useMap, useMapEvents } from "react-leaflet";
 import L from "leaflet";
 import { MapBounds } from "../../types/map.types";
+import { Globe, Map } from "lucide-react";
+import { Syne } from "next/font/google";
 
+const syne = Syne({
+  variable: "--font-syne",
+  subsets: ["latin"],
+});
 // Current Location Marker Component
 export const CurrentLocationMarker: React.FC<{
   position: [number, number];
@@ -103,47 +109,50 @@ export const LayerControl: React.FC<{
     <div
       style={{
         position: "absolute",
-        top: "10px",
-        right: "10px",
+        bottom: "22px",
+        right: "55px",
         zIndex: 1000,
-        backgroundColor: "white",
-        borderRadius: "8px",
+        backgroundColor: "#FFFFFF",
+        borderRadius: "12px",
         boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-        display: "flex",
         padding: "4px",
       }}
+      className="flex justify-center items-center"
     >
       <button
         onClick={() => handleLayerChange("street")}
         style={{
-          padding: "8px 16px",
+          padding: "6px 12px",
           border: "none",
-          borderRadius: "6px",
+          borderRadius: "12px",
           cursor: "pointer",
-          fontSize: "14px",
           fontWeight: "500",
           backgroundColor: activeLayer === "street" ? "#3b82f6" : "transparent",
-          color: activeLayer === "street" ? "white" : "#666",
+          color: activeLayer === "street" ? "#FFFFFF" : "#16153D",
           transition: "all 0.2s",
           marginRight: "4px",
         }}
+        className={`flex w-full h-full justify-center items-center gap-1 ${syne.className} font-semibold`}
       >
+        <Map className="w-4 h-4" />
         Maps
       </button>
       <button
         onClick={() => handleLayerChange("satellite")}
         style={{
-          padding: "8px 16px",
+          padding: "6px 12px",
           border: "none",
-          borderRadius: "6px",
+          borderRadius: "12px",
           cursor: "pointer",
           fontSize: "14px",
           fontWeight: "500",
           backgroundColor: activeLayer === "satellite" ? "#3b82f6" : "transparent",
-          color: activeLayer === "satellite" ? "white" : "#666",
+          color: activeLayer === "satellite" ? "#FFFFFF" : "#16153D",
           transition: "all 0.2s",
         }}
+        className={`flex w-full h-full justify-center items-center gap-1 ${syne.className} font-semibold`}
       >
+        <Globe className="w-4 h-4" />
         Satellite
       </button>
     </div>

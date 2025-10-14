@@ -151,10 +151,14 @@ export function EarlyAccessForm() {
         {formState.isSuccess ? (
           <>
             <DialogHeader className="mt-2 sm:mt-4 space-y-1.5 sm:space-y-2 text-center">
-              <DialogTitle className={`${syne.className} text-2xl text-center sm:text-2xl font-semibold text-white tracking-tight leading-[1.2]`}>
+              <DialogTitle
+                className={`${syne.className} text-2xl text-center sm:text-2xl font-semibold text-white tracking-tight leading-[1.2]`}
+              >
                 Thanks for Signing Up
               </DialogTitle>
-              <DialogDescription className={`text-white text-center px-2 ${worksans.className} leading-[1.2] text-[12px]`}>
+              <DialogDescription
+                className={`text-white text-center px-2 ${worksans.className} leading-[1.2] text-[12px]`}
+              >
                 We&apos;ve saved your spot and can&apos;t wait to share updates soon.
               </DialogDescription>
             </DialogHeader>
@@ -173,12 +177,16 @@ export function EarlyAccessForm() {
           <>
             {/* Form State */}
             <DialogHeader className="mt-2 sm:mt-4 space-y-1.5 sm:space-y-2 text-center">
-              <DialogTitle className={`${syne.className} text-2xl text-center sm:text-2xl font-semibold text-white tracking-tight leading-[1.2]`}>
+              <DialogTitle
+                className={`${syne.className} text-2xl text-center sm:text-2xl font-semibold text-white tracking-tight leading-[1.2]`}
+              >
                 Get Early Access by
                 <br />
                 Signing Up
               </DialogTitle>
-              <DialogDescription className={`text-white text-center px-2 ${worksans.className} leading-[1.2] text-[12px]`}>
+              <DialogDescription
+                className={`text-white text-center px-2 ${worksans.className} leading-[1.2] text-[12px]`}
+              >
                 Access Real Estate Data, on Demand.
               </DialogDescription>
             </DialogHeader>
@@ -194,8 +202,9 @@ export function EarlyAccessForm() {
                   value={formState.email}
                   onChange={handleEmailChange}
                   disabled={formState.isSubmitting}
-                  className={`h-11 sm:h-12 bg-white/95 border-none rounded-xl text-gray-700 placeholder:text-gray-500 text-sm sm:text-base shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1)] focus-visible:ring-2 focus-visible:ring-white/50 disabled:opacity-50 disabled:cursor-not-allowed ${formState.error ? "ring-2 ring-red-400" : ""
-                    }`}
+                  className={`h-11 sm:h-12 bg-white/95 border-none rounded-xl text-gray-700 placeholder:text-gray-500 text-sm sm:text-base shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1)] focus-visible:ring-2 focus-visible:ring-white/50 disabled:opacity-50 disabled:cursor-not-allowed ${
+                    formState.error ? "ring-2 ring-red-400" : ""
+                  }`}
                 />
                 {formState.error && (
                   <p className="text-red-200 text-xs sm:text-sm font-medium px-1">

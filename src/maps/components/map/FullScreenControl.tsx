@@ -2,19 +2,18 @@
 import React, { useEffect, useState, useCallback } from "react";
 import L from "leaflet";
 import { useMap } from "react-leaflet";
+import { Expand, Shrink } from "lucide-react";
 
 const FullscreenControl: React.FC = () => {
   const map = useMap();
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  // 🔄 Listen to fullscreen change globally
   useEffect(() => {
     const onChange = () => setIsFullscreen(!!document.fullscreenElement);
     document.addEventListener("fullscreenchange", onChange);
     return () => document.removeEventListener("fullscreenchange", onChange);
   }, []);
 
-  // ✅ Stable fullscreen toggle using useCallback
   const toggleFullscreen = useCallback(() => {
     const mapContainer = map.getContainer();
     if (!document.fullscreenElement) {
@@ -24,24 +23,44 @@ const FullscreenControl: React.FC = () => {
     }
   }, [map]);
 
-  // ✅ Add custom Leaflet control (button)
   useEffect(() => {
     const FullscreenBtn = L.Control.extend({
-      options: { position: "topleft" },
+      options: { position: "bottomright" },
       onAdd: function () {
         const button = L.DomUtil.create("button", "leaflet-bar leaflet-control");
         button.title = isFullscreen ? "Exit fullscreen" : "View fullscreen";
-        button.innerHTML = isFullscreen ? "🡑" : "⛶";
 
+        // ✅ Create Lucide icon
+        const icon = isFullscreen
+          ? React.createElement(Shrink, { size: 18 })
+          : React.createElement(Expand, { size: 18 });
+
+        const iconContainer = document.createElement("div");
+        import("react-dom/client").then((ReactDOMClient) => {
+          const root = ReactDOMClient.createRoot(iconContainer);
+          root.render(icon);
+          button.appendChild(iconContainer);
+        });
+
+        // ✅ Center icon perfectly
         Object.assign(button.style, {
           background: "white",
           cursor: "pointer",
-          fontSize: "18px",
-          lineHeight: "22px",
-          width: "30px",
-          height: "30px",
-          textAlign: "center",
+          width: "32px",
+          height: "32px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
           border: "none",
+          borderRadius: "4px",
+          boxShadow: "0 1px 3px rgba(0,0,0,0.3)",
+        });
+
+        // Optional: make sure inner div doesn’t shift layout
+        Object.assign(iconContainer.style, {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         });
 
         L.DomEvent.disableClickPropagation(button);
@@ -54,7 +73,6 @@ const FullscreenControl: React.FC = () => {
     const control = new FullscreenBtn();
     map.addControl(control);
 
-    // Cleanup on unmount
     return () => {
       map.removeControl(control);
     };
