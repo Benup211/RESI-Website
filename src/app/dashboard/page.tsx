@@ -263,6 +263,11 @@ export default function Dashboard() {
         }}
       />
 
+      <div
+        className="absolute -top-[7%] -left-[5%] w-[30%] h-[20%] rounded-full pointer-events-none blur-[90px] opacity-70"
+        style={{ background: "radial-gradient(circle, #5D87EF 80%, transparent 100%)" }}
+      ></div>
+
       <div className="absolute inset-0 pointer-events-none z-0">
         <div
           className="w-full h-full bg-black/60 backdrop-blur-md"
@@ -274,7 +279,24 @@ export default function Dashboard() {
       </div>
       <Navbar />
       <section>
-        <div className="w-full h-[10vh] lg:h-[10vh] 2xl:h-[8vh]"></div>
+        <div className="w-full h-[10vh] lg:mb-4"></div>
+        <div
+          className={
+            "relative w-full h-[10vh] lg:h-[10vh] 2xl:h-[8vh] z-20 text-[#CAD1F3] flex-col items-center justify-center text-center mb-10 hidden lg:block"
+          }
+        >
+          <h2
+            className={`${syne.className} font-semibold text-[15px] lg:text-2xl xl:text-[2vw] 3xl:text-[1.7vw] mb-2 relative`}
+          >
+            Questions about Real Estate?{" "}
+            <span className="bg-gradient-to-r from-[#C4CEFF] via-[#9C70D5] to-[#3753E4] bg-clip-text text-transparent">
+              Ask Resi.
+            </span>
+          </h2>
+          <div className="flex justify-center items-center w-[50%] mx-auto">
+            <AskResi />
+          </div>
+        </div>
         <div className="w-full h-[15vh] lg:h-[10vh] xl:h-[8vh] p-4 lg:px-8 flex flex-col lg:flex-row items-start justify-between lg:items-center gap-2">
           <h2
             className={`font-semibold leading-[0.7] ${syne.className} text-3xl xl:text-4xl bg-gradient-to-br from-[#607AFF] via-[#BFA4FF] to-[#BF51FF] bg-clip-text text-transparent z-100`}
@@ -295,10 +317,10 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col lg:h-[65vh] xl:h-[72vh] 2xl:h-[74vh] py-2 lg:px-8">
+        <div className="flex flex-col py-2 lg:px-8">
           <div
             className={`transition-all duration-500 w-full
-              ${realEstateData.length > 0 ? "h-[50vh] lg:h-[full]" : "h-[59vh] lg:h-full"} z-100 rounded-xl overflow-hidden`}
+              ${realEstateData.length > 0 ? "h-[50vh]" : "h-[60vh]"} z-100 rounded-xl overflow-hidden`}
           >
             {/* map */}
             <RealEstateMapComponent
@@ -315,10 +337,11 @@ export default function Dashboard() {
               }}
             />
           </div>
-
+        </div>
+        <div className="lg:px-8">
           {/* Real Estate Results */}
           {realEstateData.length > 0 && (
-            <ScrollArea className="w-full h-auto lg:h-[20vh] lg:max-h-[20vh] xl:h-[30vh] xl:max-h-[30vh] mt-2">
+            <ScrollArea className="w-full h-auto mt-2">
               <p
                 className={`px-4 ${syne.className} lg:leading-[0.7] text-sm xl:text-base lg:py-1 text-[#CAD1F3]`}
               >
@@ -346,7 +369,7 @@ export default function Dashboard() {
             </ScrollArea>
           )}
         </div>
-        <div className="w-full h-[15vh] xl:h-[10vh] p-2 lg:py-3 lg:px-8 flex justify-center items-center">
+        <div className="w-full h-[15vh] xl:h-[12vh] p-2 lg:py-3 lg:px-8 flex justify-center items-center">
           <div className="w-full h-full rounded-xl overflow-hidden border-[1px] border-[#345ba3]/60 relative flex justify-center items-center p-1">
             <div
               className="absolute top-0 left-0 w-[20%] h-[150%] rounded-full pointer-events-none blur-[60px] opacity-80 z-0"

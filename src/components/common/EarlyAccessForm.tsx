@@ -119,11 +119,15 @@ export function EarlyAccessForm() {
   };
 
   return (
-    <DialogContent className="w-[90%] sm:w-[345px] bg-gradient-to-br from-slate-400/40 via-slate-300/30 to-slate-400/40 border-slate-300/50 backdrop-blur-xl p-0 overflow-hidden [&>button]:hidden max-h-[85vh] overflow-y-auto">
-      <div className="flex flex-col items-center px-6 sm:px-8 py-12 sm:py-10 space-y-5 sm:space-y-4">
+    <DialogContent className="z-100 w-[90%] sm:w-[345px] border-2 border-b-[#3678F3] border-l-[#3678F3]/80 border-r-[#3678F3]/90 border-t-[#3678F3]/40 bg-gradient-to-b from-slate-500/90 via-slate-500/80 to-slate-500/90 backdrop-blur-[3px] p-0 rounded-3xl overflow-hidden shadow-[inset_0_0_40px_rgba(128,232,255,0.3)] [&>button]:hidden">
+      <div className="relative flex flex-col items-center px-6 sm:px-8 py-12 sm:py-10 space-y-5 sm:space-y-4">
+        <div
+          className="absolute top-15 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[400px] rounded-full pointer-events-none opacity-60 blur-2xl z-1"
+          style={{ background: "radial-gradient(circle, #80E8FF 0%, #B4E7FF 63%,#2B538F 100%)" }}
+        ></div>
         {/* Globe Image with Neomorphic Circle */}
-        <div className="relative flex items-center justify-center mb-4 sm:mb-2">
-          <div className="absolute w-44 h-44 sm:w-44 sm:h-44 rounded-full bg-gradient-to-br from-white/30 to-white/10 shadow-[inset_-6px_-6px_12px_rgba(255,255,255,0.3),inset_6px_6px_12px_rgba(0,0,0,0.1)] sm:shadow-[inset_-8px_-8px_16px_rgba(255,255,255,0.3),inset_8px_8px_16px_rgba(0,0,0,0.1)]" />
+        <div className="relative flex items-center justify-center mb-4 sm:mb-2 z-2">
+          <div className="absolute w-44 h-44 sm:w-44 sm:h-44 rounded-full bg-gradient-to-br from-white/30 to-white/10 shadow-[inset_-6px_-6px_12px_rgba(255,255,255,0.3),inset_6px_6px_12px_rgba(0,0,0,0.1)] sm:shadow-[inset_-8px_-8px_16px_rgba(255,255,255,0.3),inset_8px_8px_16px_rgba(0,0,0,0.1)] z-2" />
           <motion.div
             className="relative w-40 h-40 z-10"
             animate={{ y: [0, 5, 0] }}
@@ -141,16 +145,15 @@ export function EarlyAccessForm() {
             />
           </motion.div>
         </div>
-
-        <DialogClose className="absolute right-4 sm:right-6 top-4 sm:top-6 z-50">
-          <X className="h-6 w-6 sm:h-8 sm:w-8 text-white" strokeWidth={2.5} />
+        <DialogClose className="absolute right-4 sm:right-6 top-4 sm:top-6 z-50 active:border-1 active:border-slate-400">
+          <X className="h-5 w-5 text-white" strokeWidth={1.8} />
           <span className="sr-only">Close</span>
         </DialogClose>
 
         {/* Success State */}
         {formState.isSuccess ? (
           <>
-            <DialogHeader className="mt-2 sm:mt-4 space-y-1.5 sm:space-y-2 text-center">
+            <DialogHeader className="mt-2 sm:mt-4 space-y-1.5 sm:space-y-2 text-center z-2">
               <DialogTitle
                 className={`${syne.className} text-2xl text-center sm:text-2xl font-semibold text-white tracking-tight leading-[1.2]`}
               >
@@ -176,7 +179,7 @@ export function EarlyAccessForm() {
         ) : (
           <>
             {/* Form State */}
-            <DialogHeader className="mt-2 sm:mt-4 space-y-1.5 sm:space-y-2 text-center">
+            <DialogHeader className="mt-2 sm:mt-4 space-y-1.5 sm:space-y-2 text-center z-2">
               <DialogTitle
                 className={`${syne.className} text-2xl text-center sm:text-2xl font-semibold text-white tracking-tight leading-[1.2]`}
               >
