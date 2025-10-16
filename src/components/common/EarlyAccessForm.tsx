@@ -30,7 +30,11 @@ interface FormState {
   isSuccess: boolean;
 }
 
-export function EarlyAccessForm() {
+interface EarlyAccessFormProps {
+  onClose?: () => void;
+}
+
+export function EarlyAccessForm({ onClose }: EarlyAccessFormProps) {
   const [formState, setFormState] = useState<FormState>({
     email: "",
     error: "",
@@ -51,15 +55,11 @@ export function EarlyAccessForm() {
     }));
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleWaitListSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
-    // Validation
     if (!formState.email.trim()) {
-      setFormState((prev) => ({
-        ...prev,
-        error: "Email address is required",
-      }));
+      setFormState((prev) => ({ ...prev, error: "Email address is required" }));
       return;
     }
 
@@ -71,41 +71,39 @@ export function EarlyAccessForm() {
       return;
     }
 
-    // Set submitting state
-    setFormState((prev) => ({
-      ...prev,
-      isSubmitting: true,
-      error: "",
-    }));
+    setFormState((prev) => ({ ...prev, isSubmitting: true, error: "" }));
 
     try {
-      // TODO: Replace this mock with actual API call
-      // Example: await submitEarlyAccess(formState.email);
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: formState.email }),
+      });
 
-      // Mock API call - simulating network delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const data = await res.json();
 
-      // Mock success (90% success rate for demo)
-      const isSuccess = Math.random() > 0.1;
-
-      if (isSuccess) {
+      if (data.status === "success") {
         setFormState((prev) => ({
           ...prev,
           isSubmitting: false,
           isSuccess: true,
         }));
       } else {
-        throw new Error("Submission failed");
+        setFormState((prev) => ({
+          ...prev,
+          isSubmitting: false,
+          error: data.message || "Something went wrong. Please try again.",
+        }));
       }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (__) {
+    } catch {
       setFormState((prev) => ({
         ...prev,
         isSubmitting: false,
-        error: "Something went wrong. Please try again.",
+        error: "Network error. Please try again.",
       }));
     }
   };
+
 
   const handleComplete = (): void => {
     // Close the dialog - parent component should handle this
@@ -116,6 +114,7 @@ export function EarlyAccessForm() {
       isSubmitting: false,
       isSuccess: false,
     });
+    if (onClose) onClose();
   };
 
   return (
@@ -195,7 +194,7 @@ export function EarlyAccessForm() {
             </DialogHeader>
 
             {/* Form Fields */}
-            <form onSubmit={handleSubmit} className="w-full space-y-4 sm:space-y-4 pt-3 sm:pt-2">
+            <form onSubmit={handleWaitListSubmit} className="w-full space-y-4 sm:space-y-4 pt-3 sm:pt-2">
               {/* Email Input */}
               <div className="space-y-2 sm:space-y-2">
                 <Input
@@ -205,9 +204,8 @@ export function EarlyAccessForm() {
                   value={formState.email}
                   onChange={handleEmailChange}
                   disabled={formState.isSubmitting}
-                  className={`h-11 sm:h-12 bg-white/95 border-none rounded-xl text-gray-700 placeholder:text-gray-500 text-sm sm:text-base shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1)] focus-visible:ring-2 focus-visible:ring-white/50 disabled:opacity-50 disabled:cursor-not-allowed ${
-                    formState.error ? "ring-2 ring-red-400" : ""
-                  }`}
+                  className={`h-11 sm:h-12 bg-white/95 border-none rounded-xl text-gray-700 placeholder:text-gray-500 text-sm sm:text-base shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1)] focus-visible:ring-2 focus-visible:ring-white/50 disabled:opacity-50 disabled:cursor-not-allowed ${formState.error ? "ring-2 ring-red-400" : ""
+                    }`}
                 />
                 {formState.error && (
                   <p className="text-red-200 text-xs sm:text-sm font-medium px-1">

@@ -40,115 +40,19 @@ type RealEstateData = {
   status: "sold" | "for sale" | "pending";
 };
 
-const MOCK_DATA: RealEstateData[] = [
-  {
-    price: "120,000",
-    bed: 3,
-    bath: 2,
-    sqft: "2k",
-    location: "134 Hamilton St. south",
-    source: "https://resilabs.ai",
-    status: "for sale",
-  },
-  {
-    price: "120,000",
-    bed: 3,
-    bath: 2,
-    sqft: "2k",
-    location: "134 Hamilton St. south",
-    source: "https://resilabs.ai",
-    status: "pending",
-  },
-  {
-    price: "120,000",
-    bed: 3,
-    bath: 2,
-    sqft: "2k",
-    location: "134 Hamilton St. south",
-    source: "https://resilabs.ai",
-    status: "sold",
-  },
-  {
-    price: "120,000",
-    bed: 3,
-    bath: 2,
-    sqft: "2k",
-    location: "134 Hamilton St. south",
-    source: "https://resilabs.ai",
-    status: "for sale",
-  },
-  {
-    price: "120,000",
-    bed: 3,
-    bath: 2,
-    sqft: "2k",
-    location: "134 Hamilton St. south",
-    source: "https://resilabs.ai",
-    status: "pending",
-  },
-  {
-    price: "120,000",
-    bed: 3,
-    bath: 2,
-    sqft: "2k",
-    location: "134 Hamilton St. south",
-    source: "https://resilabs.ai",
-    status: "sold",
-  },
-  {
-    price: "120,000",
-    bed: 3,
-    bath: 2,
-    sqft: "2k",
-    location: "134 Hamilton St. south",
-    source: "https://resilabs.ai",
-    status: "for sale",
-  },
-  {
-    price: "120,000",
-    bed: 3,
-    bath: 2,
-    sqft: "2k",
-    location: "134 Hamilton St. south",
-    source: "https://resilabs.ai",
-    status: "pending",
-  },
-  {
-    price: "120,000",
-    bed: 3,
-    bath: 2,
-    sqft: "2k",
-    location: "134 Hamilton St. south",
-    source: "https://resilabs.ai",
-    status: "sold",
-  },
-  {
-    price: "120,000",
-    bed: 3,
-    bath: 2,
-    sqft: "2k",
-    location: "134 Hamilton St. south",
-    source: "https://resilabs.ai",
-    status: "for sale",
-  },
-  {
-    price: "120,000",
-    bed: 3,
-    bath: 2,
-    sqft: "2k",
-    location: "134 Hamilton St. south",
-    source: "https://resilabs.ai",
-    status: "pending",
-  },
-  {
-    price: "120,000",
-    bed: 3,
-    bath: 2,
-    sqft: "2k",
-    location: "134 Hamilton St. south",
-    source: "https://resilabs.ai",
-    status: "sold",
-  },
+export const MOCK_DATA: RealEstateData[] = [
+  { price: "120,000", bed: 3, bath: 2, sqft: "2k", location: "134 Hamilton St. South", source: "https://resilabs.ai", status: "for sale" },
+  { price: "135,500", bed: 4, bath: 3, sqft: "2.5k", location: "200 Main St. North", source: "https://resilabs.ai", status: "pending" },
+  { price: "98,000", bed: 2, bath: 1, sqft: "1.5k", location: "50 Park Ave", source: "https://resilabs.ai", status: "sold" },
+  { price: "160,000", bed: 5, bath: 4, sqft: "3k", location: "300 Lakeview Rd", source: "https://resilabs.ai", status: "for sale" },
+  { price: "145,000", bed: 3, bath: 2, sqft: "2.1k", location: "75 Broadway", source: "https://resilabs.ai", status: "pending" },
+  { price: "110,000", bed: 2, bath: 1, sqft: "1.7k", location: "12 Elm St.", source: "https://resilabs.ai", status: "sold" },
+  { price: "200,000", bed: 6, bath: 5, sqft: "4k", location: "500 Oak St.", source: "https://resilabs.ai", status: "for sale" },
+  { price: "130,000", bed: 3, bath: 2, sqft: "2k", location: "88 Pine St.", source: "https://resilabs.ai", status: "pending" },
+  { price: "175,000", bed: 4, bath: 3, sqft: "2.8k", location: "220 Cedar Blvd", source: "https://resilabs.ai", status: "sold" },
+  { price: "90,000", bed: 1, bath: 1, sqft: "1.2k", location: "45 Maple Dr.", source: "https://resilabs.ai", status: "for sale" },
+  { price: "155,000", bed: 4, bath: 3, sqft: "2.6k", location: "18 Birch Ln.", source: "https://resilabs.ai", status: "pending" },
+  { price: "140,000", bed: 3, bath: 2, sqft: "2.2k", location: "77 Walnut St.", source: "https://resilabs.ai", status: "sold" },
 ];
 
 export default function Dashboard() {
@@ -280,11 +184,7 @@ export default function Dashboard() {
       <Navbar />
       <section>
         <div className="w-full h-[10vh] lg:mb-4"></div>
-        <div
-          className={
-            "relative w-full h-[10vh] lg:h-[10vh] 2xl:h-[8vh] z-20 text-[#CAD1F3] flex-col items-center justify-center text-center mb-10 hidden lg:block"
-          }
-        >
+        <div className={"relative w-full h-[10vh] lg:h-[10vh] 2xl:h-[8vh] z-20 text-[#CAD1F3] flex-col items-center justify-center text-center mb-10 hidden lg:block"}>
           <h2
             className={`${syne.className} font-semibold text-[15px] lg:text-2xl xl:text-[2vw] 3xl:text-[1.7vw] mb-2 relative`}
           >
@@ -320,7 +220,7 @@ export default function Dashboard() {
         <div className="flex flex-col py-2 lg:px-8">
           <div
             className={`transition-all duration-500 w-full
-              ${realEstateData.length > 0 ? "h-[50vh]" : "h-[60vh]"} z-100 rounded-xl overflow-hidden`}
+              ${realEstateData.length > 0 ? "h-[50vh]" : "h-[60vh] xl:h-[calc(100vh-47vh)] 2xl:h-[calc(100vh-45vh)]"} z-100 rounded-xl overflow-hidden`}
           >
             {/* map */}
             <RealEstateMapComponent
@@ -338,7 +238,7 @@ export default function Dashboard() {
             />
           </div>
         </div>
-        <div className="lg:px-8">
+        <div className="lg:px-4">
           {/* Real Estate Results */}
           {realEstateData.length > 0 && (
             <ScrollArea className="w-full h-auto mt-2">

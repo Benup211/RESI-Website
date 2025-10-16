@@ -44,7 +44,7 @@ export default function RealEstateCard({
 
   const shortened = useMemo(() => {
     if (!location) return "";
-    if (location.length <= 15) return location;
+    if (location.length <= 25) return location;
 
     const first = location.slice(0, 7);
     const last = location.slice(-5);

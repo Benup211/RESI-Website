@@ -27,6 +27,7 @@ export default function AskResi() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [charIndex, setCharIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
     if (userInput.length > 0) {
@@ -93,7 +94,7 @@ export default function AskResi() {
           onKeyDown={handleKeyDown}
           className="pr-14 h-12 bg-muted/50 border-0 rounded-full text-black font-medium placeholder:text-gray-600"
         />
-        <Dialog>
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button
               size="icon"
@@ -103,7 +104,7 @@ export default function AskResi() {
               <Image src={"/icon/button-resi.svg"} alt="resi icon" width={23} height={23} />
             </Button>
           </DialogTrigger>
-          <EarlyAccessForm />
+          <EarlyAccessForm onClose={() => setIsDialogOpen(false)}/>
         </Dialog>
       </div>
     </div>
