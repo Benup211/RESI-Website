@@ -72,12 +72,16 @@ export default function AskResi() {
     // If user hasn't typed anything, use the current placeholder as input
     const searchQuery = userInput || placeholder;
     if (searchQuery) {
+      // Open the dialog
+      setIsDialogOpen(true);
       // Add your search logic here
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
+      e.preventDefault();
+      e.stopPropagation();
       handleSubmit();
     }
   };
