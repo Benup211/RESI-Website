@@ -104,7 +104,6 @@ export function EarlyAccessForm({ onClose }: EarlyAccessFormProps) {
     }
   };
 
-
   const handleComplete = (): void => {
     // Close the dialog - parent component should handle this
     // Reset form state
@@ -194,7 +193,10 @@ export function EarlyAccessForm({ onClose }: EarlyAccessFormProps) {
             </DialogHeader>
 
             {/* Form Fields */}
-            <form onSubmit={handleWaitListSubmit} className="w-full space-y-4 sm:space-y-4 pt-3 sm:pt-2">
+            <form
+              onSubmit={handleWaitListSubmit}
+              className="w-full space-y-4 sm:space-y-4 pt-3 sm:pt-2"
+            >
               {/* Email Input */}
               <div className="space-y-2 sm:space-y-2">
                 <Input
@@ -204,8 +206,9 @@ export function EarlyAccessForm({ onClose }: EarlyAccessFormProps) {
                   value={formState.email}
                   onChange={handleEmailChange}
                   disabled={formState.isSubmitting}
-                  className={`h-11 sm:h-12 bg-white/95 border-none rounded-xl text-gray-700 placeholder:text-gray-500 text-sm sm:text-base shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1)] focus-visible:ring-2 focus-visible:ring-white/50 disabled:opacity-50 disabled:cursor-not-allowed ${formState.error ? "ring-2 ring-red-400" : ""
-                    }`}
+                  className={`h-11 sm:h-12 bg-white/95 border-none rounded-xl text-gray-700 placeholder:text-gray-500 text-sm sm:text-base shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1)] focus-visible:ring-2 focus-visible:ring-white/50 disabled:opacity-50 disabled:cursor-not-allowed ${
+                    formState.error ? "ring-2 ring-red-400" : ""
+                  }`}
                 />
                 {formState.error && (
                   <p className="text-red-200 text-xs sm:text-sm font-medium px-1">

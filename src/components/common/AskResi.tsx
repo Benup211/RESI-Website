@@ -108,7 +108,7 @@ export default function AskResi() {
               <Image src={"/icon/button-resi.svg"} alt="resi icon" width={23} height={23} />
             </Button>
           </DialogTrigger>
-          <EarlyAccessForm onClose={() => setIsDialogOpen(false)}/>
+          <EarlyAccessForm onClose={() => setIsDialogOpen(false)} />
         </Dialog>
       </div>
     </div>

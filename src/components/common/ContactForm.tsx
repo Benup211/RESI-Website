@@ -1,13 +1,13 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Work_Sans, Syne } from "next/font/google";
+import { toast } from "sonner";
 
 const worksans = Work_Sans({
   variable: "--font-work-sans",
@@ -26,9 +26,40 @@ export default function ContactForm() {
     telegram: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // console.log("Form submitted:", formData);
+
+    if (!formData.name || !formData.email) {
+      toast.error("Name and Email are required.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contactus", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          telegram: formData.telegram,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.status === "success") {
+        toast.success("Submission successful!");
+        setFormData({ name: "", email: "", telegram: "" });
+      } else {
+        toast.error("Submission failed. Try again later.");
+      }
+    } catch {
+      toast.error("Error submitting form.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,7 +86,7 @@ export default function ContactForm() {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="name" className={`text-white text-sm font-semibold ${syne.className}`}>
-              Name
+              Name <span className="text-red-500">*</span>
             </Label>
             <Input
               id="name"
@@ -63,14 +94,14 @@ export default function ContactForm() {
               type="text"
               value={formData.name}
               onChange={handleChange}
-              className="bg-transparent border-white/80 text-white rounded-xl h-12 focus-visible:ring-white/50"
               required
+              className="bg-transparent border-white/80 text-white rounded-xl h-12 focus-visible:ring-white/50"
             />
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="email" className={`text-white text-sm font-semibold ${syne.className}`}>
-              Email
+              Email <span className="text-red-500">*</span>
             </Label>
             <Input
               id="email"
@@ -78,8 +109,8 @@ export default function ContactForm() {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="bg-transparent border-white/80 text-white rounded-xl h-12 focus-visible:ring-white/50"
               required
+              className="bg-transparent border-white/80 text-white rounded-xl h-12 focus-visible:ring-white/50"
             />
           </div>
 
@@ -102,9 +133,10 @@ export default function ContactForm() {
 
           <Button
             type="submit"
+            disabled={loading}
             className={`w-full h-12 bg-gradient-to-b from-[#DDEDFF] to-[#445CA0] hover:from-blue-300 hover:to-indigo-300 text-black font-bold rounded-xl text-[1rem]/[0.9] ${syne.className}`}
           >
-            SUBMIT
+            {loading ? "Submitting..." : "SUBMIT"}
           </Button>
         </form>
       </CardContent>

@@ -3,20 +3,22 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { email } = await req.json();
+    const { name, email, telegram } = await req.json();
 
-    if (!email || !email.includes("@")) {
-      return NextResponse.json({ status: "error", message: "Invalid email" }, { status: 400 });
+    if (!name || !email || !email.includes("@")) {
+      return NextResponse.json(
+        { status: "error", message: "Name and valid email required" },
+        { status: 400 }
+      );
     }
 
-    const res = await fetch(process.env.WAITLIST_URL as string, {
+    const res = await fetch(process.env.CONTACT_FORM_URL as string, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ name, email, telegram }),
     });
 
     const data = await res.json();
-
     return NextResponse.json(data);
   } catch (err: any) {
     return NextResponse.json(
