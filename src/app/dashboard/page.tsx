@@ -184,16 +184,16 @@ export default function Dashboard() {
       <Navbar />
       <section>
         <div className="w-full h-[10vh] lg:mb-4"></div>
-        <div className={"relative w-full h-[10vh] lg:h-[10vh] 2xl:h-[8vh] z-20 text-[#CAD1F3] flex-col items-center justify-center text-center mb-10 hidden lg:block"}>
+        <div className={"relative w-full h-[10vh] lg:h-[10vh] 2xl:h-[8vh] z-20 text-[#CAD1F3] flex-col items-center justify-center text-center my-4 lg:mb-10 block"}>
           <h2
-            className={`${syne.className} font-semibold text-[15px] lg:text-2xl xl:text-[2vw] 3xl:text-[1.7vw] mb-2 relative`}
+            className={`${syne.className} font-semibold text-[18px] lg:text-2xl xl:text-[2vw] 3xl:text-[1.7vw] mb-2 relative`}
           >
             Questions about Real Estate?{" "}
             <span className="bg-gradient-to-r from-[#C4CEFF] via-[#9C70D5] to-[#3753E4] bg-clip-text text-transparent">
               Ask Resi.
             </span>
           </h2>
-          <div className="flex justify-center items-center w-[50%] mx-auto">
+          <div className="flex justify-center items-center w-[90%] lg:w-[50%] mx-auto">
             <AskResi />
           </div>
         </div>
