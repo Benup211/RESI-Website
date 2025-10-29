@@ -41,7 +41,7 @@ interface RealEstateMapProps {
 const RealEstateMap: React.FC<RealEstateMapProps> = ({
   properties = mockProperties,
   eventHandlers = {},
-  initialCenter = [39.8283, -98.5795], // Center of USA
+  initialCenter = [36.144736, -86.775870], // Center of USA
   initialZoom = 5,
   showCurrentLocation = true,
   currentLocationLabel = "You are here",
@@ -56,6 +56,7 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
   // const [hoveredState, setHoveredState] = useState<string | null>(null);
   const internalMapRef = useRef<L.Map | null>(null);
   const mapRef = externalMapRef || internalMapRef;
+  const mapTilerKey = process.env.NEXT_PUBLIC_MAPTILER_KEY;
 
   // Cache for API calls
   // const boundsCache = useRef<Map<string, Property[]>>(new Map());
@@ -112,7 +113,7 @@ const RealEstateMap: React.FC<RealEstateMapProps> = ({
   // Tile layer URLs (Fixed satellite URL)
   const tileLayers = {
     street: {
-      url: "https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
+      url: `https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=${mapTilerKey}`,
       attribution: "&copy; Google Map",
     },
     satellite: {

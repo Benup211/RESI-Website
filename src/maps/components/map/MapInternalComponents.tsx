@@ -109,7 +109,7 @@ export const LayerControl: React.FC<{
     <div
       style={{
         position: "absolute",
-        bottom: "22px",
+        bottom: "10px",
         right: "55px",
         zIndex: 1000,
         backgroundColor: "#FFFFFF",
